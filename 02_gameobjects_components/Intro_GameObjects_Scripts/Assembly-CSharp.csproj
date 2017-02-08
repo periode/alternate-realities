@@ -73,6 +73,7 @@
      <Compile Include="Assets\CardboardBehaviour.cs" />
      <Compile Include="Assets\CubeBehaviour.cs" />
      <Compile Include="Assets\RaycastManager.cs" />
+     <Compile Include="Assets\SphereBehaviour.cs" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
      <None Include="Assets\Cardboard\Resources\UnlitTexture.shader" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
