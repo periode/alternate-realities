@@ -72,6 +72,8 @@
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\UnityEditorDevice.cs" />
      <Compile Include="Assets\CardboardBehaviour.cs" />
      <Compile Include="Assets\CubeBehaviour.cs" />
+     <Compile Include="Assets\CylinderStretching.cs" />
+     <Compile Include="Assets\GrowthController.cs" />
      <Compile Include="Assets\RaycastManager.cs" />
      <Compile Include="Assets\SphereBehaviour.cs" />
      <None Include="Assets\Cardboard\Distortion\CardboardDistortion.cginc" />
