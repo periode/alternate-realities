@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomForest", "Assembly-CSharp.csproj", "{7F4F0705-F46E-5BD8-A51F-610B9B82F9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomForest", "Assembly-CSharp-Editor.csproj", "{7942BFB6-DCC2-45A5-4FC5-DE18475A9754}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F4F0705-F46E-5BD8-A51F-610B9B82F9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4F0705-F46E-5BD8-A51F-610B9B82F9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4F0705-F46E-5BD8-A51F-610B9B82F9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4F0705-F46E-5BD8-A51F-610B9B82F9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7942BFB6-DCC2-45A5-4FC5-DE18475A9754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7942BFB6-DCC2-45A5-4FC5-DE18475A9754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7942BFB6-DCC2-45A5-4FC5-DE18475A9754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7942BFB6-DCC2-45A5-4FC5-DE18475A9754}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
