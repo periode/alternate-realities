@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
-	// 1
+	//This script should be attached to each controller (Controller Left or Controller Right)
+
+	// Getting a reference to the controller GameObject
 	private SteamVR_TrackedObject trackedObj;
-	// 2
+	// Getting a reference to the controller Interface
 	private SteamVR_Controller.Device Controller
 	{
 		get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -14,36 +16,38 @@ public class InputManager : MonoBehaviour {
 
 	void Awake()
 	{
+		// initialize the trackedObj to the component of the controller to which the script is attached
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		// 1
+
+		// Getting the Touchpad Axis
 		if (Controller.GetAxis() != Vector2.zero)
 		{
 			Debug.Log(gameObject.name + Controller.GetAxis());
 		}
 
-		// 2
+		// Getting the Trigger press
 		if (Controller.GetHairTriggerDown())
 		{
 			Debug.Log(gameObject.name + " Trigger Press");
 		}
 
-		// 3
+		// Getting the Trigger Release
 		if (Controller.GetHairTriggerUp())
 		{
 			Debug.Log(gameObject.name + " Trigger Release");
 		}
 
-		// 4
+		// Getting the Grip Press
 		if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
 		{
 			Debug.Log(gameObject.name + " Grip Press");
 		}
 
-		// 5
+		// Getting the Grip Release
 		if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
 		{
 			Debug.Log(gameObject.name + " Grip Release");
