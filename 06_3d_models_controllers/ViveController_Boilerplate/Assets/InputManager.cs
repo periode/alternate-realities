@@ -33,6 +33,13 @@ public class InputManager : MonoBehaviour {
 		if (Controller.GetHairTriggerDown())
 		{
 			Debug.Log(gameObject.name + " Trigger Press");
+
+			//if we're on controller right
+			if(gameObject.name == "Controller (right)"){
+
+				//find the interaction manager and call the function we wrote
+				GameObject.Find ("InteractionManager").GetComponent<Interactions> ().HandleRightTriggerPressed ();
+			}
 		}
 
 		// Getting the Trigger Release
