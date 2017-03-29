@@ -38,7 +38,7 @@ public class MyNetwork : Photon.PunBehaviour {
 	{
 		// here, we use PhotonNetwork.Instantiate instead of GameObject.Instantiate to make sure that the GameObject we Instantiate
 		// will be kept track of by Photon in order to update its information in MyNetworkCommunication.cs
-		GameObject being = PhotonNetwork.Instantiate ("Being", new Vector3(0, 2, 0), Quaternion.identity, 0);
+		PhotonNetwork.Instantiate ("Being", new Vector3(0, 2, 0), Quaternion.identity, 0);
 
 		// in order for this prefab to be instantiated, it should be located in Assets/Resources folder
 	}
