@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networking_Basics", "Assembly-CSharp-firstpass.csproj", "{C06D07D6-A8EF-45A3-BD0E-258B4D8427EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networking_Basics", "Assembly-CSharp.csproj", "{E99EA737-DD48-F143-B8DE-4D347595DF49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networking_Basics", "Assembly-CSharp-Editor.csproj", "{D56C869E-1404-53D6-09C6-279595C4EC51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C06D07D6-A8EF-45A3-BD0E-258B4D8427EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06D07D6-A8EF-45A3-BD0E-258B4D8427EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06D07D6-A8EF-45A3-BD0E-258B4D8427EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06D07D6-A8EF-45A3-BD0E-258B4D8427EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99EA737-DD48-F143-B8DE-4D347595DF49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99EA737-DD48-F143-B8DE-4D347595DF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99EA737-DD48-F143-B8DE-4D347595DF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99EA737-DD48-F143-B8DE-4D347595DF49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56C869E-1404-53D6-09C6-279595C4EC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56C869E-1404-53D6-09C6-279595C4EC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56C869E-1404-53D6-09C6-279595C4EC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56C869E-1404-53D6-09C6-279595C4EC51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
