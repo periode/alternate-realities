@@ -36,11 +36,31 @@ public class MyNetwork : Photon.PunBehaviour {
 	// once we've joined our room, we want to instantiate an object for our player to control
 	public override void OnJoinedRoom ()
 	{
-		// here, we use PhotonNetwork.Instantiate instead of GameObject.Instantiate to make sure that the GameObject we Instantiate
-		// will be kept track of by Photon in order to update its information in MyNetworkCommunication.cs
-		PhotonNetwork.Instantiate ("Being", new Vector3(0, 2, 0), Quaternion.identity, 0);
+		// here, Instantiate to make sure that the GameObject we Instantiate
+		// will NOT be kept track of by Photon
+		GameObject player = Instantiate ("Player", new Vector3(0, 0, 0), Quaternion.identity, 0);
+
+		// however, we do not want to synchronize the whole camera rig, or that would cause maddening problems of who controls what.
+		// instead, we are going to instantiate simple prefabs over the network and attach them to the camerarig to represent their position to other users
+
+		// using PhotonNetwork.Instantiate the Head prefab to keep track of it over the network
+		GameObject playerHead = PhotonNetwork.Instantiate ("Head", transform.position, transform.rotation);
+		// attaching it to the Camera (head) object -it is the 3rd child of our player GameObject
+		playerHead.transform.parent = player.transform.GetChild (2).transform;
+
+		// for the hands, we attach prefabs to each controllers
+		// using PhotonNetwork.Instantiate the Head prefab to keep track of it over the network
+		GameObject handLeft = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation);
+		// attaching it to the Camera (head) object -it is the 1st child of our player GameObject
+		handLeft.transform.parent = player.transform.GetChild (0).transform;
+
+		GameObject handRight = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation);
+		// attaching it to the Camera (head) object -it is the 2nd child of our player GameObject
+		handRight.transform.parent = player.transform.GetChild (1).transform;
+
 
 		// in order for this prefab to be instantiated, it should be located in Assets/Resources folder
+		// and each of these prefabs have a PhotonView component and a MyNetworkCommunication component
 	}
 
 	public override void OnPhotonRandomJoinFailed (object[] codeAndMsg)
