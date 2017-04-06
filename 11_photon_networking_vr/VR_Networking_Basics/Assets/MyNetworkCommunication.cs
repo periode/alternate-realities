@@ -12,6 +12,9 @@ public class MyNetworkCommunication : Photon.MonoBehaviour { // and replace Mono
 	// Use this for initialization
 	void Start () {
 
+		//be invisible to local user
+		if (photonView.isMine)
+			GetComponent<Renderer> ().enabled = "false";
 	}
 
 	// Update is called once per frame

@@ -1,6 +1,6 @@
 float step = 0.05;
 float noiseVal = 0;
-float noiseCoeff = 200;
+float noiseCoeff = 100;
 
 void setup() {
   size(1000, 600);

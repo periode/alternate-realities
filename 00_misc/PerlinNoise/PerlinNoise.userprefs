@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MyNetworkCommunication.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LerpManager.cs">
     <Files>
-      <File FileName="Assets/MyNetwork.cs" Line="44" Column="59" />
-      <File FileName="Assets/MyNetworkCommunication.cs" Line="15" Column="31" />
+      <File FileName="Assets/Earthquake.cs" Line="19" Column="17" />
+      <File FileName="Assets/Blinking.cs" Line="36" Column="30" />
+      <File FileName="Assets/LerpManager.cs" Line="15" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

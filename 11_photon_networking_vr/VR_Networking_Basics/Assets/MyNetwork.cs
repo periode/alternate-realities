@@ -7,6 +7,9 @@ using Photon; //we need to add that line to use Photon-specific methods
 // so that we can override some methods offered by Photon (lines 27-48)
 public class MyNetwork : Photon.PunBehaviour {
 
+
+	public GameObject playerPrefab;
+
 	// Use this for initialization
 	void Start () {
 		//this line allows us to connect to the network. The only argument is the version of the application.
@@ -38,23 +41,23 @@ public class MyNetwork : Photon.PunBehaviour {
 	{
 		// here, Instantiate to make sure that the GameObject we Instantiate
 		// will NOT be kept track of by Photon
-		GameObject player = Instantiate ("Player", new Vector3(0, 0, 0), Quaternion.identity, 0);
+		GameObject player = GameObject.Instantiate (playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
 		// however, we do not want to synchronize the whole camera rig, or that would cause maddening problems of who controls what.
 		// instead, we are going to instantiate simple prefabs over the network and attach them to the camerarig to represent their position to other users
 
 		// using PhotonNetwork.Instantiate the Head prefab to keep track of it over the network
-		GameObject playerHead = PhotonNetwork.Instantiate ("Head", transform.position, transform.rotation);
+		GameObject playerHead = PhotonNetwork.Instantiate ("Head", transform.position, transform.rotation, 0);
 		// attaching it to the Camera (head) object -it is the 3rd child of our player GameObject
 		playerHead.transform.parent = player.transform.GetChild (2).transform;
 
 		// for the hands, we attach prefabs to each controllers
 		// using PhotonNetwork.Instantiate the Head prefab to keep track of it over the network
-		GameObject handLeft = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation);
+		GameObject handLeft = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation, 0);
 		// attaching it to the Camera (head) object -it is the 1st child of our player GameObject
 		handLeft.transform.parent = player.transform.GetChild (0).transform;
 
-		GameObject handRight = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation);
+		GameObject handRight = PhotonNetwork.Instantiate ("Hand", transform.position, transform.rotation, 0);
 		// attaching it to the Camera (head) object -it is the 2nd child of our player GameObject
 		handRight.transform.parent = player.transform.GetChild (1).transform;
 
