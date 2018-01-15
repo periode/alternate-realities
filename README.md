@@ -20,7 +20,7 @@ Wednesday — 1:00 - 6:00PM
 
 ### [Words of Wisdom](https://twitter.com/CarlCanary/status/702035013718638592)
 
-From Frieder Nake, father of Computer Art.
+From Frieder Nake, pioneer of computer graphics and computer art.
 
 
 ### Course Description
