@@ -6,8 +6,8 @@ Pierre Depaz (pierre.depaz@nyu.edu)
 
 
 ### Meeting Time
-Tuesday — 2:40 - 3:55PM
-Thursday — 2:40 - 5:20PM
+Tuesday — 16:05 - 17:20
+Thursday — 2:40 - 17:20
 
 
 ### Office

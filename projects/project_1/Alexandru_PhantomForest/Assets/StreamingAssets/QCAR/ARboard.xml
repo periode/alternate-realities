@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="surface_pillsside" size="100.000000 500.353363" />
-    <ImageTarget name="surface_pillsback" size="100.000000 125.889969" />
-    <ImageTarget name="surface_pillsfront" size="100.000000 123.101601" />
-    <ImageTarget name="surface_combook" size="100.000000 177.777771" />
-  </Tracking>
-</QCARConfig>
