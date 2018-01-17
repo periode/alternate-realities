@@ -7,6 +7,7 @@ Pierre Depaz (pierre.depaz@nyu.edu)
 
 ### Meeting Time
 Tuesday — 16:05 - 17:20
+
 Thursday — 14:40 - 17:20
 
 
@@ -15,7 +16,8 @@ C3-032
 
 
 ### Office hours
-Wednesday — 13:00 - 18:00PM
+Wednesday — 13:00 - 18:00
+
 (but anytime as long as you write me an email, I'm happy to meet, really)
 
 ### [Words of Wisdom](https://twitter.com/CarlCanary/status/702035013718638592)
