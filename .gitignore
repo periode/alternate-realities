@@ -8,6 +8,7 @@
 **/*.userprefs
 **/*.csproj
 **/*.unityproj
+**/*.sln
 
 # ==== OSX files
 **/.DS_Store
