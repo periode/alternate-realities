@@ -1,4 +1,17 @@
 **/Library/
 **/Temp/
-.DS_Store
+**/Obj/
+*.pidb.meta
+*.pdb.meta
+
+# ==== MonoDevelop files
+**/*.userprefs
+**/*.csproj
+**/*.unityproj
+
+# ==== OSX files
+**/.DS_Store
+.DS_Store*
+._*
+.Trashed
 notes/
