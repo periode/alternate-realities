@@ -1,3 +1,5 @@
+https://gist.github.com/periode/f1c757da0a2aafee2649c0617e1e2ac8
+
 ### scene and game object basics
 * create a new project in unity
 * create a new scene by `Assets > Create... > Scene`
