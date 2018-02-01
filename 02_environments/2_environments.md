@@ -92,7 +92,7 @@
 * with your new object (a cylinder), tick the `Is Trigger` check box in the `Collider` component
 * add a new script called `ColliderManager.cs` on the cylinder
 * below `Update()`, we write a function to check if another object enters the collider of the cylinder
-* ```
+```
 void OnTriggerEnter(Collider col){
 	Debug.Log ("something entered: "+col);
 }
