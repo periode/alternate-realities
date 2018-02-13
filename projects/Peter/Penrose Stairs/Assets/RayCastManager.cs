@@ -8,7 +8,7 @@ public class RayCastManager : MonoBehaviour {
 	float raycastNirvanaDistance;
 	public float maxHeight;
 	bool setFirst = false;
-
+	bool gameNotOver = true;
 	int startedSeeing;
 
 //	public float timer;
@@ -30,9 +30,11 @@ public class RayCastManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		RaycastingSteps ();
-		RaycastingNirvana ();
+		if (gameNotOver) {
+			
+			RaycastingSteps ();
+			RaycastingNirvana ();
+		}
 	}
 
 	void RaycastingNirvana(){
@@ -51,7 +53,8 @@ public class RayCastManager : MonoBehaviour {
 				if((int)Time.frameCount - startedSeeing > 10){
 					//end game
 
-					hit.collider.gameObject.GetComponent<Renderer> ().material.color = Color.cyan;
+					transform.position = Vector3.Lerp(transform.position, new Vector3 (10, 100, 10), Time.deltaTime * 5.0f);
+					gameNotOver = false;
 
 				}
 			
@@ -76,6 +79,8 @@ public class RayCastManager : MonoBehaviour {
 
 			//let's see which step we're hitting
 			int hittingStepValue = ( (hit.collider.gameObject.GetComponent<stepBehavior>().stairWay *20 ) + (hit.collider.gameObject.GetComponent<stepBehavior>().stepNumber)) % 80;
+
+
 
 			//initialization msut happne here
 			if (!setFirst) {

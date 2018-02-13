@@ -11,7 +11,7 @@ public class StairCaseGenerator : MonoBehaviour {
 	void Start () {
 		
 		GameObject.Instantiate (myStairCase, Vector3.zero, Quaternion.identity);
-		GameObject.Instantiate (myNirvana, new Vector3 (10, 100, 10), Quaternion.identity);
+		GameObject.Instantiate (myNirvana, new Vector3 (10, 300, 10), Quaternion.identity);
 
 	}
 	
