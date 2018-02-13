@@ -26,12 +26,12 @@ public class EnvironmentGenerator : MonoBehaviour {
 	void Start () {
 
 //		newPos = new Vector3 (Random.Range (minf, max), Random.Range (minf, max), Random.Range (minf, max));
-		max = 20.0f;
-		min = -20.0f;
+		max = 8.0f;
+		min = -8.0f;
 		counter = 0;
 
 		numPreFabs = 5;
-		eachPreFab = 20;
+		eachPreFab = 25;
 		preFabs = new GameObject[numPreFabs];
 		allPreFabs = new GameObject[numPreFabs*eachPreFab];;
 
@@ -50,17 +50,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 				allPreFabs[counter]= GameObject.Instantiate (preFabs [i] as GameObject, newPos, Quaternion.identity);
 				counter++;
 			}
-//			for (int j = 0; j < eachPreFab; j++) {
-//				float xPos = Random.Range (min, max);
-//				float yPos = Random.Range (min, max);
-//				float zPos= Random.Range (min, max);
-//				allPreFabs[counter] = GameObject.Instantiate (preFabs[i] as GameObject, new Vector3 (xPos, yPos, zPos), 
-//					Quaternion.identity);
-//				counter++;
-//				allPreFabs [counter].transform.SetParent (this.transform);
-//			}
 		}
-
 	}
 	
 	// Update is called once per frame
