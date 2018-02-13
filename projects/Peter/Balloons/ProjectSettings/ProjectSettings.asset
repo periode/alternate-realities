@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: b1482f79efc8d4f4897be02c6de98748
+  productGUID: cff92f700c6ee4e24890ac7a90442425
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Penrose Stairs
+  productName: Balloons
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -558,14 +558,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Penrose Stairs
+  metroPackageName: Balloons
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Penrose Stairs
+  metroApplicationDescription: Balloons
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -631,15 +631,11 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
-    Collab: 0
-    ErrorHub: 0
-    Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: c194fe8a-7f50-43d2-908f-f21475264d04
-  projectName: Penrose Stairs
+  cloudProjectId: f18c55ab-ace3-4313-98d2-2c71ca4c8e5e
+  projectName: Balloons
   organizationId: tltjddns
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

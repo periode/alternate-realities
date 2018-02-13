@@ -14,7 +14,7 @@ public class RayCastManager : MonoBehaviour {
 //	public float timer;
 	Color[] colors = new Color[5] {Color.red, Color.blue,  Color.black, Color.green, Color.white};
 	int colorCnt;
-	int nirvanaLayerMask;
+	LayerMask nirvanaLayerMask;
 	GameObject currStep;
 	int currStepValue;
 	// Use this for initialization
@@ -33,29 +33,31 @@ public class RayCastManager : MonoBehaviour {
 		if (gameNotOver) {
 			
 			RaycastingSteps ();
-			RaycastingNirvana ();
 		}
+			RaycastingNirvana ();
+
+
+		
+
 	}
 
 	void RaycastingNirvana(){
 
-
 		Vector3 fwd = GetComponentInChildren<Camera> ().transform.TransformDirection (Vector3.forward);
 		RaycastHit hit = new RaycastHit ();
-
 		//we hit nirvana
-		if( Physics.Raycast(transform.position, fwd, out hit, raycastNirvanaDistance, nirvanaLayerMask )  ){
+		if( Physics.Raycast(transform.position, fwd, out hit, raycastNirvanaDistance, nirvanaLayerMask) ){
 
 			if (startedSeeing != 0) {
-				
 			
 				//compare if the time we're seeing this 
-				if((int)Time.frameCount - startedSeeing > 10){
+				if((int)Time.frameCount - startedSeeing > 50){
 					//end game
 
-					transform.position = Vector3.Lerp(transform.position, new Vector3 (10, 300, 10), Time.deltaTime * 5.0f);
+					transform.position = Vector3.Lerp(transform.position, new Vector3 (10, 300, 10), Time.deltaTime * 3.0f);
 					gameNotOver = false;
 
+					Debug.Log ("end of Game!");
 				}
 			
 			} else {
