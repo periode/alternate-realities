@@ -21,6 +21,10 @@ public class BlackWhiteRenderer : MonoBehaviour {
 	void Update () {
 		StartCoroutine (DoSomethingAfterSomeSeconds (delay));
 
+//		if(GetComponent<AudioSource>().isPlaying == false){
+//			GetComponent<AudioSource> ().Play ();
+//		}
+
 	}
 
 	IEnumerator DoSomethingAfterSomeSeconds(float seconds) {
