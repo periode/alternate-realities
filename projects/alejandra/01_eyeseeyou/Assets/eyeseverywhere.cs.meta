@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e563fd451c1ea488aad0a906b2b9ef20
+timeCreated: 1518448578
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - theBlueEye: {fileID: 1039599589140962, guid: be9eb88a0b2494e35a8652426d1d4f2b,
+      type: 2}
+  - theGreenEye: {fileID: 1937790445759660, guid: d7d471ffafd7d431e832fcacbe48ad5a,
+      type: 2}
+  - theHazelEye: {fileID: 1051900696026464, guid: 1e1d6fec773214239ba8002af5837a89,
+      type: 2}
+  - theBrownEye: {fileID: 1679522092094550, guid: 9762b865aceb54fcdbc087df902acfd1,
+      type: 2}
+  - target: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

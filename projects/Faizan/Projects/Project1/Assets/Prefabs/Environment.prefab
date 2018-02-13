@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1756583672471934}
+  m_IsPrefabParent: 1
+--- !u!1 &1756583672471934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4930420765576436}
+  - component: {fileID: 114293645072221094}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4930420765576436
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756583672471934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1, y: 2.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114293645072221094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756583672471934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5cd07a54f3b480a966738d024603cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preFab1: {fileID: 1670756744229218, guid: fe5a20f7144d14f5dbbce0ae115062cc, type: 2}
+  preFab2: {fileID: 1802560055943632, guid: 5550ea570b33348ec8d556d5457ee96e, type: 2}
+  preFab3: {fileID: 1816247452686286, guid: d9db3dc3d383e405189f8de65f46b3ab, type: 2}
+  preFab4: {fileID: 1736119983264684, guid: 92a6f116d8f2e4a1bbcdcfd3fb248552, type: 2}
+  preFab5: {fileID: 1834817058969166, guid: 9e0d732d6d0d54898a4d83296078ae02, type: 2}
+  preFab6: {fileID: 0}
+  numPreFabs: 0
+  eachPreFab: 0
+  counter: 0
+  max: 0
+  min: 0

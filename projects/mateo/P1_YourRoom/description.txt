@@ -1,0 +1,3 @@
+Your Room aims to recreate an environment that emulates a simple room or dorm. The layout of the furniture is randomized to make the experience unique in each go and potentially reveal details through the orientation of the props.
+
+The project combines the feeling of familiarity that one gets from being in a bedroom with a feeling of dread or creepiness arising from the textures and lights that fade into the scene as the user isn't looking at them. By making these changes disappear as the user looks at them, Your Room aims to elicit the feeling of doing a double-take and doubting one's own senses.
