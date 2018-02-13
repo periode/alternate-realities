@@ -53,7 +53,7 @@ public class RayCastManager : MonoBehaviour {
 				if((int)Time.frameCount - startedSeeing > 10){
 					//end game
 
-					transform.position = Vector3.Lerp(transform.position, new Vector3 (10, 100, 10), Time.deltaTime * 5.0f);
+					transform.position = Vector3.Lerp(transform.position, new Vector3 (10, 300, 10), Time.deltaTime * 5.0f);
 					gameNotOver = false;
 
 				}
