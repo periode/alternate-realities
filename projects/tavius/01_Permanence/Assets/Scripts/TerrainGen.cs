@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TerrainGen : MonoBehaviour {
 
-    public int width = 256;
-    public int height = 256;
+    public int width = 128;
+    public int height = 128;
     public float depth = 1.5f;
-    public float scale = 20f;
-
+    public float scale = 22.7f;
 
     void Start()
     {
@@ -19,11 +18,11 @@ public class TerrainGen : MonoBehaviour {
         GameObject.Find("GvrEditorEmulator").transform.Translate(-width / 2, 2.5f, -height / 2);
     }
 
-    void Update ()
+    // Uncomment to live-update the terrain in Unity Inspector:
+    void update()
     {
-        Terrain World = GetComponent<Terrain>();
-        World.terrainData = MakeWorld(World.terrainData);
-
+    //    Terrain World = GetComponent<Terrain>();
+    //    World.terrainData = MakeWorld(World.terrainData);
     }
 
     TerrainData MakeWorld(TerrainData terrainData)

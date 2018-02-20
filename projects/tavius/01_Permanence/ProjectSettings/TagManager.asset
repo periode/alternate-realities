@@ -8,8 +8,10 @@ TagManager:
   - Non-Interactable
   - Sit
   - Rock
-  - Ground
   - Unlock
+  - SmolRock
+  - World
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -20,10 +22,10 @@ TagManager:
   - 
   - 
   - Unlock
-  - Ground
+  - World
   - Rock
-  - 
-  - 
+  - SmolRock
+  - Tree
   - 
   - 
   - 
