@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 797058984}
   m_Layer: 9
   m_Name: World
-  m_TagString: World
+  m_TagString: HideFromPaint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -940,7 +940,7 @@ MonoBehaviour:
   terrain: {fileID: 797058982}
   numMedRocks: 25
   numSmallRocks: 30
-  numTrees: 10
+  numTrees: 20
   mediumRock: {fileID: 678960652}
   smallRock: {fileID: 189037188}
   tree: {fileID: 899889396}

@@ -12,6 +12,7 @@ TagManager:
   - SmolRock
   - World
   - Tree
+  - HideFromPaint
   layers:
   - Default
   - TransparentFX

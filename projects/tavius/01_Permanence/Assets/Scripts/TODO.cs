@@ -5,13 +5,13 @@
 
 ___TexturePainting___
 - Is there a way to round off the view-painting?
-- Add World texture below Seen environment objects.
+X Add World texture below Seen environment objects.
     - Fade this in once envobj is Seen.
 
 ___Sight___
 - Implement editAlpha() to fade in EnvObjs.
 - Add trees.
-- User feedback other EnvObjs.
+- User test for other EnvObj additions.
 - Tweak castDistance as extra layer of reveal?
     - Too obscure for viewers?
     - Sync with fog?
