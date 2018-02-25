@@ -11,7 +11,7 @@ public class TexturePainting : MonoBehaviour
     public TerrainData terrainData;
     public Texture2D drawSquare;
     public Color[] textureData;
-    public int drawSize = 32;
+    public int drawSize = 18;
     public int fileX;
     public int fileY;
     public int layers;
@@ -31,6 +31,17 @@ public class TexturePainting : MonoBehaviour
         textureData = drawSquare.GetPixels();
         // Backup current terrain texture to reset on exit:
         original = terrainData.GetAlphamaps(0, 0, fileX, fileY);
+    }
+
+    public void Restart(int newDrawSize)
+    {
+        drawSize = newDrawSize;
+        drawSquare = new Texture2D(drawSize, drawSize);
+        terrainData = Terrain.activeTerrain.terrainData;
+        fileX = terrainData.alphamapWidth;
+        fileY = terrainData.alphamapHeight;
+        layers = terrainData.alphamapLayers;
+        textureData = drawSquare.GetPixels();
     }
 
     void OnApplicationQuit()
@@ -56,46 +67,48 @@ public class TexturePainting : MonoBehaviour
 
         if (Physics.Raycast(GameObject.Find("Main Camera").transform.position, forward, out hit, maxDistance: 200))
         {   // NOTE: While functional, the following may be outdated, code was adapted from old internet advice.
-
-            // An InverseLerp calculates where along the entire terrain the hit.point hit.
-            // A regular Lerp uses that datapoint to find on where the alphamap was hit.
-            int w = (int)Mathf.Lerp(0, fileX, Mathf.InverseLerp(0, terrainData.size.x, hit.point.x));
-            int h = (int)Mathf.Lerp(0, fileY, Mathf.InverseLerp(0, terrainData.size.z, hit.point.z));
-
-            // These values are then fixed within the alphamap based on the the bounds of the desired drawing size:
-            w = Mathf.Clamp(w, drawSize / 2, fileX - drawSize / 2);
-            h = Mathf.Clamp(h, drawSize / 2, fileY - drawSize / 2);
-
-            // Assigns the appropriate section of the Alphamap to draw the new square upon:
-            var area = terrainData.GetAlphamaps(w - drawSize / 2, h - drawSize / 2, drawSize, drawSize);
-
-            // Loop over the drawSquare pixels and populate the fill area:
-            for (int x = 0; x < drawSize; x++)
+            if (!hit.collider.gameObject.CompareTag("HideFromPaint"))
             {
-                for (int y = 0; y < drawSize; y++)
+                // An InverseLerp calculates where along the entire terrain the hit.point hit.
+                // A regular Lerp uses that datapoint to find on where the alphamap was hit.
+                int w = (int)Mathf.Lerp(0, fileX, Mathf.InverseLerp(0, terrainData.size.x, hit.point.x));
+                int h = (int)Mathf.Lerp(0, fileY, Mathf.InverseLerp(0, terrainData.size.z, hit.point.z));
+
+                // These values are then fixed within the alphamap based on the the bounds of the desired drawing size:
+                w = Mathf.Clamp(w, drawSize / 2, fileX - drawSize / 2);
+                h = Mathf.Clamp(h, drawSize / 2, fileY - drawSize / 2);
+
+                // Assigns the appropriate section of the Alphamap to draw the new square upon:
+                var area = terrainData.GetAlphamaps(w - drawSize / 2, h - drawSize / 2, drawSize, drawSize);
+
+                // Loop over the drawSquare pixels and populate the fill area:
+                for (int x = 0; x < drawSize; x++)
                 {
-                    // Apply both components of the texture:
-                    for (int z = 0; z < layers; z++)
+                    for (int y = 0; y < drawSize; y++)
                     {
-                        if (z == 1)
+                        // Apply both components of the texture:
+                        for (int z = 0; z < layers; z++)
                         {
-                            area[x, y, z] += textureData[x * drawSize + y].a;
-                        }
-                        else
-                        {
-                            area[x, y, z] -= textureData[x * drawSize + y].a;
+                            if (z == 1)
+                            {
+                                area[x, y, z] += textureData[x * drawSize + y].a;
+                            }
+                            else
+                            {
+                                area[x, y, z] -= textureData[x * drawSize + y].a;
+                            }
                         }
                     }
                 }
+                // Draw the new texture over the area:
+                // terrainData.SetAlphamaps(w - drawSize / 2, h - drawSize / 2, area);
+
+                int wOut = w - drawSize / 2;
+                int hOut = h - drawSize / 2;
+
+                // Aesthetic delay:
+                StartCoroutine(DrawTextureDelay(wOut, hOut, area, secs));
             }
-            // Draw the new texture over the area:
-            // terrainData.SetAlphamaps(w - drawSize / 2, h - drawSize / 2, area);
-
-            int wOut = w - drawSize / 2;
-            int hOut = h - drawSize / 2;
-
-            // Aesthetic delay:
-            StartCoroutine(DrawTextureDelay(wOut, hOut, area, secs));
         }
     }
 

@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Interactables
-  - Non-Interactable
-  - Sit
-  - Rock
-  - Unlock
-  - SmolRock
-  - World
-  - Tree
-  - HideFromPaint
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -22,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - Unlock
-  - World
-  - Rock
-  - SmolRock
-  - Tree
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

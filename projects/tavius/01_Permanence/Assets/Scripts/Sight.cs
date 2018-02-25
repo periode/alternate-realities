@@ -14,6 +14,7 @@ public class Sight : MonoBehaviour
     public float fog; // RenderSettings.fogDensity // 0.0f to 1.0f;
     private int rockCount = 0;
     private int treeCount = 0;
+    private TexturePainting my_texture;
 
     void Start()
     {
@@ -37,10 +38,17 @@ public class Sight : MonoBehaviour
                 {
                     if (!unlocked)
                     {
-                        // This should be an outside call the alpha editing method:
-                        inView.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-                        unlocked = true;
-                        RenderSettings.fogDensity = 0.05f;
+                        if (inView.GetComponent<EnvObjQualities>().seen == false)
+                        {
+                            // This should be an outside call the alpha editing method:
+                            inView.GetComponent<EnvObjQualities>().alpha = 1;
+                            inView.tag = "HideFromPaint";
+                            inView.GetComponent<EnvObjQualities>().seen = true;
+                            GameObject.Find("World").AddComponent<TexturePainting>();
+                            my_texture = GameObject.Find("World").gameObject.GetComponent<TexturePainting>();
+                            unlocked = true;
+                            RenderSettings.fogDensity = 0.05f;
+                        }
                     }
                 }
 
@@ -49,9 +57,10 @@ public class Sight : MonoBehaviour
                 {
                     if (unlocked)
                     {
-                        inView.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
                         if (inView.GetComponent<EnvObjQualities>().seen == false)
                         {
+                            inView.GetComponent<EnvObjQualities>().alpha = 1;
+                            inView.tag = "HideFromPaint";
                             inView.GetComponent<EnvObjQualities>().seen = true;
                             rockCount++;
                             RenderSettings.fogDensity -= 0.0015f;
@@ -64,9 +73,10 @@ public class Sight : MonoBehaviour
                 {
                     if (unlocked)
                     {
-                        inView.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
                         if (inView.GetComponent<EnvObjQualities>().seen == false)
                         {
+                            inView.GetComponent<EnvObjQualities>().alpha = 1;
+                            inView.tag = "HideFromPaint";
                             inView.GetComponent<EnvObjQualities>().seen = true;
                             treeCount++;
                             RenderSettings.fogDensity -= 0.0015f;
@@ -75,13 +85,11 @@ public class Sight : MonoBehaviour
                 }
 
                 // World
-                if (inView.CompareTag("World") && !canPaintWorld)
+                if (rockCount > 15 && !canPaintWorld)
                 {
-                    if (rockCount > 20)
-                    {
-                        canPaintWorld = true;
-                        inView.AddComponent<TexturePainting>();
-                    }
+                    GameObject.Find("World").tag = "World";
+                    canPaintWorld = true;
+                    my_texture.Restart(32);
                 }
 
                 //Debug.Log(rockCount);

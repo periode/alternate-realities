@@ -15,6 +15,7 @@ public class EnvObjQualities : MonoBehaviour
     {
         if (seen)
         {
+            this.GetComponent<Renderer>().material.color = new Color(1, 1, 1, alpha);
             this.tag = "Non-Interactable";
         }
     }

@@ -58,15 +58,15 @@ public class EnvObjGenerator : MonoBehaviour
             currentSmallRocks += 1;
         }
 
-        //Generate trees
-        //while (currentTrees < numTrees)
-        //{
-        //    int posx = Random.Range(terrainPosX + terrainWidth / 8, terrainWidth - terrainWidth / 8);
-        //    int posz = Random.Range(terrainPosZ + terrainLength / 8, terrainLength - terrainLength / 8);
-        //    float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
-        //    // create new tree, slightly sunk into the ground:
-        //    GameObject.Instantiate(tree, new Vector3(posx, posy - 1.0f, posz), Quaternion.Euler(0, Random.Range(0.0f, 359.9f), 0));
-        //    currentTrees += 1;
-        //}
+        // Generate trees
+        while (currentTrees < numTrees)
+        {
+            int posx = Random.Range(terrainPosX + terrainWidth / 8, terrainWidth - terrainWidth / 8);
+            int posz = Random.Range(terrainPosZ + terrainLength / 8, terrainLength - terrainLength / 8);
+            float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
+            // create new tree, slightly sunk into the ground:
+            GameObject.Instantiate(tree, new Vector3(posx, posy - 1.0f, posz), Quaternion.Euler(0, Random.Range(0.0f, 359.9f), 0));
+            currentTrees += 1;
+        }
     }
 }
