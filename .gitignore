@@ -19,3 +19,6 @@
 ._*
 .Trashed
 notes/
+
+# ==== Visual Studio
+.vs
