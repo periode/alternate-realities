@@ -32,6 +32,10 @@ hr {
 	background-color: black;
 }
 
+img {
+	max-height: 300px;
+}
+
 .concept-group{
 	width: 100%;
 }
