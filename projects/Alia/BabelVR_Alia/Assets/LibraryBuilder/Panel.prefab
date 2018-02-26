@@ -52,9 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   book: {fileID: 1150847322603922, guid: fa773554a29184948b6c128bb594a791, type: 2}
-  numberOfShelves: 4
+  book2: {fileID: 1482167031704860, guid: 1ab0eb4b87367744193d02421c12b281, type: 2}
+  numberOfShelves: 7
   numberOfBooksPerShelf: 20
   bookSpacing: 0.125
-  shelfSpacing: 0.55
+  shelfSpacing: 0.35
   hexagon: 0
   rowNumber: 0

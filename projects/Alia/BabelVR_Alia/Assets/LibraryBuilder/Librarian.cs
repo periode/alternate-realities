@@ -5,10 +5,17 @@ using UnityEngine;
 public class Librarian : MonoBehaviour {
 
 	public GameObject shelf;
+    public GameObject floor;
 	public float roomSize = 18.0f;
+    
 
 	// Use this for initialization
 	void Start () {
+
+        
+
+
+
 		for (float i = 0; i < 6; i += 1) {
 			if (i != 0 && i != 3) {
 				for (int j = 0; j < 5; j++) {
