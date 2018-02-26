@@ -1,0 +1,904 @@
+TerrainEdge Shader Library
+==========================
+This file contains terrain replacement shaders.  The shaders are 
+extracted from this file by TerrainEdge and then created as files
+within your project's asset folder.
+
+The path to the generated files are: "assets/terrainFirst.shader" 
+and "assets/terrainAdd.shader".  Each shader includes a note to 
+credit the original author.  But, to be clear who did what:
+	
+Shader 0 & 4 = Default unity shaders.
+
+Shader 2     = Based on ALLEGORITHMIC's shader.
+
+Shader 3 & 7 = FARFARER's tri-planar shader.
+               ¯¯¯¯¯¯¯¯               
+Shader 1     = CHRIS MORRIS's first-pass bumpmap shader.
+	           ¯¯¯¯¯¯¯¯¯¯¯¯	           
+Shader 5     = UNLOGICK's add-pass bumpmap shader.
+               ¯¯¯¯¯¯¯¯
+Without their contributions to the community, TerrainEdge would
+probably not have a shader library.  So, thanks to you all. :)                   
+
+------------------------------------------------------------------	
+
+<SHADER0>
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-FirstPass" {
+Properties {
+	_Control ("Control (RGBA)", 2D) = "red" {}
+	_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+	_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+	_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+	_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+	// used in fallback on old cards
+	_MainTex ("BaseMap (RGB)", 2D) = "white" {}
+	_Color ("Main Color", Color) = (1,1,1,1)
+}
+	
+SubShader {
+	Tags {
+		"SplatCount" = "4"
+		"Queue" = "Geometry-100"
+		"RenderType" = "Opaque"
+	}
+CGPROGRAM
+#pragma surface surf Lambert
+struct Input {
+	float2 uv_Control : TEXCOORD0;
+	float2 uv_Splat0 : TEXCOORD1;
+	float2 uv_Splat1 : TEXCOORD2;
+	float2 uv_Splat2 : TEXCOORD3;
+	float2 uv_Splat3 : TEXCOORD4;
+};
+
+sampler2D _Control;
+sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
+float _mixUVTile0,_mixUVTile1,_mixUVTile2,_mixUVTile3;
+
+void surf (Input IN, inout SurfaceOutput o) {
+	fixed4 splat_control = tex2D (_Control, IN.uv_Control);
+	fixed3 col;
+	col  = splat_control.r * 0.5f * (tex2D (_Splat0, IN.uv_Splat0).rgb + tex2D (_Splat0, IN.uv_Splat0 * _mixUVTile0).rgb);
+	col += splat_control.g * 0.5f * (tex2D (_Splat1, IN.uv_Splat1).rgb + tex2D (_Splat1, IN.uv_Splat1 * _mixUVTile0).rgb);
+	col += splat_control.b * 0.5f * (tex2D (_Splat2, IN.uv_Splat2).rgb + tex2D (_Splat2, IN.uv_Splat2 * _mixUVTile0).rgb);
+	col += splat_control.a * 0.5f * (tex2D (_Splat3, IN.uv_Splat3).rgb + tex2D (_Splat3, IN.uv_Splat3 * _mixUVTile0).rgb);
+	o.Albedo = col;
+	o.Alpha = 0.0;
+}
+ENDCG  
+}
+
+// Fallback to Diffuse
+Fallback "Diffuse"
+}
+</SHADER0>
+<SHADER1>
+/* Note: Original Bump+Spec shader by Chris Morris / 6x0 
+   =====================================================
+*/
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-FirstPass" {
+Properties {
+	_Control ("Control (RGBA)", 2D) = "red" {}
+	_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+	_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+	_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+	_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+	// used in fallback on old cards
+	_MainTex ("BaseMap (RGB)", 2D) = "white" {}
+	_Color ("Main Color", Color) = (1,1,1,1)
+	_SpecColor ("Specular Color", Color) = (0.5, 0.5, 0.5, 1)
+}
+
+SubShader {
+	Tags {
+		"SplatCount" = "4"
+		"Queue" = "Geometry-100"
+		"RenderType" = "Opaque"
+	}
+CGPROGRAM
+#pragma surface surf BlinnPhong vertex:vert
+#pragma target 3.0
+#include "UnityCG.cginc"
+
+struct Input {
+	float3 worldPos;
+	float2 uv_Control : TEXCOORD0;
+	float2 uv_Splat0 : TEXCOORD1;
+	float2 uv_Splat1 : TEXCOORD2;
+	float2 uv_Splat2 : TEXCOORD3;
+	float2 uv_Splat3 : TEXCOORD4;
+};
+
+// Supply the shader with tangents for the terrain
+void vert (inout appdata_full v) {
+
+	// A general tangent estimation	
+	float3 T1 = float3(1, 0, 1);
+	float3 Bi = cross(T1, v.normal);
+	float3 newTangent = cross(v.normal, Bi);
+	
+	normalize(newTangent);
+
+	v.tangent.xyz = newTangent.xyz;
+	
+	if (dot(cross(v.normal,newTangent),Bi) < 0)
+		v.tangent.w = -1.0f;
+	else
+		v.tangent.w = 1.0f;
+}
+
+sampler2D _Control;
+sampler2D _BumpMap0, _BumpMap1, _BumpMap2, _BumpMap3;
+sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
+float _Spec0, _Spec1, _Spec2, _Spec3, _Tile0, _Tile1, _Tile2, _Tile3, _TerrainX, _TerrainZ, _mixUVTile0, _mixUVTile1, _mixUVTile2, _mixUVTile3;
+
+float4 _v4CameraPos;
+
+void surf (Input IN, inout SurfaceOutput o) {
+
+	half4 splat_control = tex2D (_Control, IN.uv_Control);
+	half3 col;
+	
+	// 4 splats, normals, and specular settings
+	col  = splat_control.r * 0.5f * (tex2D (_Splat0, IN.uv_Splat0).rgb + tex2D (_Splat0, IN.uv_Splat0 * _mixUVTile0).rgb);
+	o.Normal = splat_control.r * UnpackNormal(tex2D(_BumpMap0, float2(IN.uv_Control.x * (_TerrainX/_Tile0), IN.uv_Control.y * (_TerrainZ/_Tile0))));
+	o.Gloss = _Spec0 * splat_control.r;
+	o.Specular = _Spec0 * splat_control.r;
+
+	col += splat_control.g * 0.5f * (tex2D (_Splat1, IN.uv_Splat1).rgb + tex2D (_Splat1, IN.uv_Splat1 * _mixUVTile1).rgb);
+	o.Normal += splat_control.g * UnpackNormal(tex2D(_BumpMap1, float2(IN.uv_Control.x * (_TerrainX/_Tile1), IN.uv_Control.y * (_TerrainZ/_Tile1))));
+	o.Gloss += _Spec1 * splat_control.g;
+	o.Specular += _Spec1 * splat_control.g;
+	
+	col += splat_control.b * 0.5f * (tex2D (_Splat2, IN.uv_Splat2).rgb + tex2D (_Splat2, IN.uv_Splat2 * _mixUVTile2).rgb);
+	o.Normal += splat_control.b * UnpackNormal(tex2D(_BumpMap2, float2(IN.uv_Control.x * (_TerrainX/_Tile2), IN.uv_Control.y * (_TerrainZ/_Tile2))));
+	o.Gloss += _Spec2 * splat_control.b;
+	o.Specular +=_Spec2 * splat_control.b;
+	
+	col += splat_control.a * 0.5f * (tex2D (_Splat3, IN.uv_Splat3).rgb + tex2D (_Splat3, IN.uv_Splat3 * _mixUVTile3).rgb);
+	o.Normal += splat_control.a * UnpackNormal(tex2D(_BumpMap3, float2(IN.uv_Control.x * (_TerrainX/_Tile3), IN.uv_Control.y * (_TerrainZ/_Tile3))));
+	o.Gloss += _Spec3 * splat_control.a;
+	o.Specular += _Spec3 * splat_control.a;
+	
+	o.Albedo = col;
+	o.Alpha = 0.0;
+}
+ENDCG  
+}
+
+// Fallback to Diffuse
+Fallback "Diffuse"
+}
+</SHADER1>
+<SHADER2>
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-FirstPass" {
+Properties {
+	_Control ("Control (RGBA)", 2D) = "red" {}
+	_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+	_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+	_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+	_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+	// used in fallback on old cards
+	_MainTex ("BaseMap (RGBA)", 2D) = "white" {}
+	_Color ("Main Color", Color) = (1,1,1,1)
+	_SpecColor ("Specular Color", Color) = (1, 1, 1, 1)
+	
+}
+
+SubShader {
+	Tags {
+		"SplatCount" = "4"
+		"Queue" = "Geometry-100"
+		"RenderType" = "Opaque"
+	}
+CGPROGRAM
+#pragma surface surf BlinnPhong vertex:vert
+#pragma target 3.0
+#include "UnityCG.cginc"
+
+struct Input {
+	float3 worldPos;
+	float2 uv_Control : TEXCOORD0;
+	float2 uv_Splat0 : TEXCOORD1;
+	float2 uv_Splat1 : TEXCOORD2;
+	float2 uv_Splat2 : TEXCOORD3;
+	float2 uv_Splat3 : TEXCOORD4;
+};
+
+// Supply the shader with tangents for the terrain
+void vert (inout appdata_full v) {
+
+	// A general tangent estimation	
+	float3 T1 = float3(1, 0, 1);
+	float3 Bi = cross(T1, v.normal);
+	float3 newTangent = cross(v.normal, Bi);
+	
+	normalize(newTangent);
+
+	v.tangent.xyz = newTangent.xyz;
+	
+	if (dot(cross(v.normal,newTangent),Bi) < 0)
+		v.tangent.w = -1.0f;
+	else
+		v.tangent.w = 1.0f;
+}
+
+sampler2D _Control;
+sampler2D _BumpMap0, _BumpMap1, _BumpMap2, _BumpMap3;
+sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
+float _Spec0,_Spec1,_Spec2,_Spec3,_MixScale,_mixUVTile0,_mixUVTile1,_mixUVTile2,_mixUVTile3;
+
+void surf (Input IN, inout SurfaceOutput o) {
+
+	half4 splat_control = tex2D (_Control, IN.uv_Control);
+	half3 col;
+	half4 splat0 = tex2D (_Splat0, IN.uv_Splat0);
+	half4 splat1 = tex2D (_Splat1, IN.uv_Splat1);
+	half4 splat2 = tex2D (_Splat2, IN.uv_Splat2);
+	half4 splat3 = tex2D (_Splat3, IN.uv_Splat3);
+
+	col += (splat_control.r * lerp(splat0.rgb,(tex2D (_Splat0, IN.uv_Splat0 * -_MixScale).rgb), _mixUVTile0));
+	o.Normal = (splat_control.r * lerp(UnpackNormal(tex2D(_BumpMap0, IN.uv_Splat0)),UnpackNormal(tex2D(_BumpMap0, IN.uv_Splat0 * -_MixScale)), _mixUVTile0));
+	
+	//col += splat_control.r * splat0.rgb;
+	//o.Normal = splat_control.r * UnpackNormal(tex2D(_BumpMap0, IN.uv_Splat0));
+	o.Gloss = splat0.a * splat_control.r * _Spec0;
+	o.Specular = 0.3 * splat_control.r;
+	
+	col += (splat_control.g * lerp(splat1.rgb,(tex2D (_Splat1, IN.uv_Splat1 * -_MixScale).rgb), _mixUVTile1));
+	
+	//col += splat_control.g * splat1.rgb;
+	o.Normal += splat_control.g * UnpackNormal(tex2D(_BumpMap1, IN.uv_Splat1));
+	o.Gloss += splat1.a * splat_control.g * _Spec1;
+	o.Specular += 0.3 * splat_control.g;
+	
+	col += (splat_control.b * lerp(splat2.rgb,(tex2D (_Splat2, IN.uv_Splat2 * -_MixScale).rgb), _mixUVTile2));
+	
+	//col += splat_control.b * splat2.rgb;
+	o.Normal += splat_control.b * UnpackNormal(tex2D(_BumpMap2, IN.uv_Splat2));
+	o.Gloss += splat2.a * splat_control.b * _Spec2;
+	o.Specular += 0.3 * splat_control.b;
+	
+	col += (splat_control.a * lerp(splat3.rgb,(tex2D (_Splat3, IN.uv_Splat3 * -_MixScale).rgb), _mixUVTile3));
+	
+	//col += splat_control.a * splat3.rgb;
+	o.Normal += splat_control.a * UnpackNormal(tex2D(_BumpMap3, IN.uv_Splat3));
+	o.Gloss += splat3.a * splat_control.a * _Spec3;
+	o.Specular += 0.3 * splat_control.a;
+
+	o.Albedo = col;
+	o.Alpha = 0.0;
+}
+ENDCG  
+}
+
+// Fallback to Diffuse
+Fallback "Diffuse"
+}
+</SHADER2>
+<SHADER3>
+/* Note: Original Tri-Planar shader by FarFarer 
+   ============================================
+*/
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-FirstPass" {
+	Properties {
+		_Control ("Control (RGBA)", 2D) = "red" {}
+		_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+		_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+		_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+		_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+		// used in fallback on old cards
+		_Color ("Main Color", Color) = (1,1,1,1)
+		_MainTex ("Base (RGB)", 2D) = "white" {}
+	}
+	SubShader {
+		Tags {"SplatCount" = "4" "Queue" = "Geometry-100" "RenderType" = "Opaque"}
+		
+		CGPROGRAM
+			#pragma surface surf Terrain vertex:vert exclude_path:prepass
+			#pragma target 3.0
+	
+			sampler2D _Control;
+
+			struct SurfaceOutputTerrain {
+				fixed3 Albedo;
+				fixed3 Normal;
+				fixed4 Light;
+				fixed3 Emission;
+				fixed Specular;
+				fixed Alpha;
+			};
+
+			inline fixed4 LightingTerrain (SurfaceOutputTerrain s, fixed3 lightDir, fixed3 viewDir, fixed atten)
+			{
+				float4 result;
+				result.rgb = (s.Albedo * s.Light.x) + ( pow(s.Light.y, s.Light.w * 128) * s.Light.z );
+				result.rgb *= _LightColor0.rgb * atten * 2;
+				result.a = 0.0;
+				return result;
+			}
+									
+			struct Input {
+				float2	uv_Control;
+				float3	worldPos;
+				float3	worldNormal;
+				float3	lightDir;
+				float3	viewDir;
+			};
+	
+			void vert(inout appdata_full v, out Input o) {
+				o.worldPos = mul(_Object2World, v.vertex).xyz;
+				o.worldNormal = mul(_Object2World, float4(v.normal, 0.0)).xyz;
+				o.lightDir = normalize(ObjSpaceLightDir(v.vertex));
+				o.viewDir = normalize(ObjSpaceViewDir(v.vertex));
+			}
+
+			sampler2D _Splat0, _Splat1, _Splat2, _Splat3;
+			sampler2D _BumpMap0, _BumpMap1, _BumpMap2, _BumpMap3;
+			sampler2D _SpecMap0, _SpecMap1, _SpecMap2, _SpecMap3;
+			float _TerrainTexScale0, _TerrainTexScale1, _TerrainTexScale2, _TerrainTexScale3;
+			float _mixUVTile0,_mixUVTile1,_mixUVTile2,_mixUVTile3;
+	
+			void surf (Input IN, inout SurfaceOutputTerrain o) {
+			// INITIALISE THE CONTROL SPLAT FOR TERRAIN
+				fixed4 splat_control = tex2D(_Control, IN.uv_Control);
+	
+			// INITIALISE THE VARIABLES FOR TRIPLANAR PROJECTION
+				float3 worldNormal = normalize(IN.worldNormal);
+				float3 projNormal = saturate(pow(worldNormal * 1.4, 4));
+	
+			// INITIALISE VARIABLES WE'LL NEED
+				float3 tangent;
+				float3 binormal;
+				float3x3 rotation;
+				float3 lightDirT;
+				float3 viewDirT;
+				
+				float2 uv;
+				float2 uv0;
+				float2 uv1;
+				float2 uv2;
+				float2 uv3;
+				
+				float3 h;
+				float4 tempNormal;
+				float3 normal;
+				
+				fixed3 albedoX;
+				fixed3 albedoY;
+				fixed3 albedoZ;
+				fixed4 lightX;
+				fixed4 lightY;
+				fixed4 lightZ;
+	
+			// CALCULATE X FOR ALL
+			
+				// UV
+				uv = IN.worldPos.zy;
+				uv0 = uv * _TerrainTexScale0;
+				uv1 = uv * _TerrainTexScale1;
+				uv2 = uv * _TerrainTexScale2;
+				uv3 = uv * _TerrainTexScale3;
+	
+				// Tangent
+				tangent = float3(0, 0, 1);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.x, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoX = (tex2D(_Splat0, uv0).rgb + tex2D(_Splat0, uv0 * _mixUVTile0) .rgb) * 0.5f * splat_control.r;
+				albedoX += (tex2D(_Splat1, uv1).rgb + tex2D(_Splat1, uv1 * _mixUVTile1) .rgb) * 0.5f * splat_control.g;
+				albedoX += (tex2D(_Splat2, uv2).rgb + tex2D(_Splat2, uv2 * _mixUVTile2) .rgb) * 0.5f * splat_control.b;
+				albedoX += (tex2D(_Splat3, uv3).rgb + tex2D(_Splat3, uv3 * _mixUVTile3) .rgb) * 0.5f * splat_control.a;
+				                                            
+				// Normal
+				tempNormal = tex2D (_BumpMap0, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap1, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap2, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap3, uv3) * splat_control.a;
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightX.zw = tex2D (_SpecMap0, uv0).rg * splat_control.r;
+				lightX.zw += tex2D (_SpecMap1, uv1).rg * splat_control.g;
+				lightX.zw += tex2D (_SpecMap2, uv2).rg * splat_control.b;
+				lightX.zw += tex2D (_SpecMap3, uv3).rg * splat_control.a;
+				
+				// Lighting Values
+				lightX.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightX.y = saturate(dot(normal, h));
+	
+			// CALCULATE Y FOR ALL
+			
+				// UV
+				uv = IN.worldPos.xz;
+				uv0 = uv * _TerrainTexScale0;
+				uv1 = uv * _TerrainTexScale1;
+				uv2 = uv * _TerrainTexScale2;
+				uv3 = uv * _TerrainTexScale3;
+	
+				// Tangent
+				tangent = float3(1, 0, 0);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.y, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoY = (tex2D(_Splat0, uv0).rgb + (tex2D(_Splat0, uv0 * _mixUVTile0).rgb)) * 0.5f * splat_control.r;
+				albedoY += (tex2D(_Splat1, uv1).rgb + (tex2D(_Splat1, uv1 * _mixUVTile1).rgb)) * 0.5f * splat_control.g;
+				albedoY += (tex2D(_Splat2, uv2).rgb + (tex2D(_Splat2, uv2 * _mixUVTile2).rgb)) * 0.5f * splat_control.b;
+				albedoY += (tex2D(_Splat3, uv3).rgb + (tex2D(_Splat3, uv3 * _mixUVTile3).rgb)) * 0.5f * splat_control.a;
+				
+				// Normal
+				tempNormal = tex2D (_BumpMap0, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap1, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap2, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap3, uv3) * splat_control.a;
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightY.zw = tex2D (_SpecMap0, uv0).rg * splat_control.r;
+				lightY.zw += tex2D (_SpecMap1, uv1).rg * splat_control.g;
+				lightY.zw += tex2D (_SpecMap2, uv2).rg * splat_control.b;
+				lightY.zw += tex2D (_SpecMap3, uv3).rg * splat_control.a;
+				
+				// Lighting Values
+				lightY.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightY.y = saturate(dot(normal, h));
+	
+			// CALCULATE Z FOR ALL
+			
+				// UV
+				uv = IN.worldPos.xy;
+				uv.x *= -1;
+				uv0 = uv * _TerrainTexScale0;
+				uv1 = uv * _TerrainTexScale1;
+				uv2 = uv * _TerrainTexScale2;
+				uv3 = uv * _TerrainTexScale3;
+	
+				// Tangent
+				tangent = float3(-1, 0, 0);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.z, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoZ = (tex2D(_Splat0, uv0).rgb + (tex2D(_Splat0, uv0 * _mixUVTile0).rgb)) * 0.5f * splat_control.r;
+				albedoZ += (tex2D(_Splat1, uv1).rgb + (tex2D(_Splat1, uv0 * _mixUVTile1).rgb)) * 0.5f * splat_control.g;
+				albedoZ += (tex2D(_Splat2, uv2).rgb + (tex2D(_Splat2, uv0 * _mixUVTile2).rgb)) * 0.5f * splat_control.b;
+				albedoZ += (tex2D(_Splat3, uv3).rgb + (tex2D(_Splat3, uv0 * _mixUVTile3).rgb)) * 0.5f * splat_control.a;
+				
+				// Normal
+				tempNormal = tex2D (_BumpMap0, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap1, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap2, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap3, uv3) * splat_control.a;
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightZ.zw = tex2D (_SpecMap0, uv0).rg * splat_control.r;
+				lightZ.zw += tex2D (_SpecMap1, uv1).rg * splat_control.g;
+				lightZ.zw += tex2D (_SpecMap2, uv2).rg * splat_control.b;
+				lightZ.zw += tex2D (_SpecMap3, uv3).rg * splat_control.a;
+				
+				// Lighting Values
+				lightZ.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightZ.y = saturate(dot(normal, h));
+	
+				o.Albedo = albedoZ;
+				o.Albedo = lerp(o.Albedo, albedoY, projNormal.y);
+				o.Albedo = lerp(o.Albedo, albedoX, projNormal.x);
+				
+				o.Light = lightZ;
+				o.Light = lerp(o.Light, lightY, projNormal.y);
+				o.Light = lerp(o.Light, lightX, projNormal.x);
+			}
+	
+		ENDCG
+	}
+	Fallback "VertexLit"
+}
+</SHADER3>
+<SHADER4>
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-AddPass" {
+Properties {
+	_Control ("Control (RGBA)", 2D) = "black" {}
+	_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+	_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+	_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+	_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+}
+	
+SubShader {
+	Tags {
+		"SplatCount" = "4"
+		"Queue" = "Geometry-99"
+		"IgnoreProjector"="True"
+		"RenderType" = "Opaque"
+	}
+	
+CGPROGRAM
+#pragma surface surf Lambert decal:add
+struct Input {
+	float2 uv_Control : TEXCOORD0;
+	float2 uv_Splat0 : TEXCOORD1;
+	float2 uv_Splat1 : TEXCOORD2;
+	float2 uv_Splat2 : TEXCOORD3;
+	float2 uv_Splat3 : TEXCOORD4;
+};
+
+sampler2D _Control;
+sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
+float _mixUVTile4,_mixUVTile5,_mixUVTile6,_mixUVTile7;
+
+void surf (Input IN, inout SurfaceOutput o) {
+	fixed4 splat_control = tex2D (_Control, IN.uv_Control);
+	fixed3 col;
+	col  = splat_control.r * 0.5f * (tex2D (_Splat0, IN.uv_Splat0).rgb + tex2D (_Splat0, IN.uv_Splat0 * _mixUVTile4).rgb);
+	col += splat_control.g * 0.5f * (tex2D (_Splat1, IN.uv_Splat1).rgb + tex2D (_Splat1, IN.uv_Splat1 * _mixUVTile5).rgb);
+	col += splat_control.b * 0.5f * (tex2D (_Splat2, IN.uv_Splat2).rgb + tex2D (_Splat2, IN.uv_Splat2 * _mixUVTile6).rgb);
+	col += splat_control.a * 0.5f * (tex2D (_Splat3, IN.uv_Splat3).rgb + tex2D (_Splat3, IN.uv_Splat3 * _mixUVTile7).rgb);
+	o.Albedo = col;
+	o.Alpha = 0.0;
+}
+ENDCG  
+}
+
+Fallback off
+}
+</SHADER4>
+<SHADER5>
+/* Note: Original Bump+Spec (AddPass) shader by Unlogick 
+   =====================================================
+*/
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-AddPass" {
+Properties {
+	_Control ("Control (RGBA)", 2D) = "black" {}
+	_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+	_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+	_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+	_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+}
+
+SubShader {
+	Tags {
+		"SplatCount" = "4"
+		"Queue" = "Geometry-99"
+		"IgnoreProjector"="True"
+		"RenderType" = "Transparent"
+	}
+	Blend One One
+CGPROGRAM
+#pragma surface surf BlinnPhong vertex:vert
+#pragma target 3.0
+#include "UnityCG.cginc"
+
+struct Input {
+	float2 uv_Control : TEXCOORD0;
+	float2 uv_Splat0 : TEXCOORD1;
+	float2 uv_Splat1 : TEXCOORD2;
+	float2 uv_Splat2 : TEXCOORD3;
+	float2 uv_Splat3 : TEXCOORD4;
+};
+
+// Supply the shader with tangents for the terrain
+void vert (inout appdata_full v) {
+
+	// A general tangent estimation	
+	float3 T1 = float3(1, 0, 1);
+	float3 Bi = cross(T1, v.normal);
+	float3 newTangent = cross(v.normal, Bi);
+	
+	normalize(newTangent);
+
+	v.tangent.xyz = newTangent.xyz;
+	
+	if (dot(cross(v.normal,newTangent),Bi) < 0)
+		v.tangent.w = -1.0f;
+	else
+		v.tangent.w = 1.0f;
+}
+
+sampler2D _Control;
+sampler2D _BumpMap4, _BumpMap5, _BumpMap6, _BumpMap7;
+sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
+float _mixUVTile4,_mixUVTile5,_mixUVTile6,_mixUVTile7;
+void surf (Input IN, inout SurfaceOutput o) {
+
+	half4 splat_control = tex2D (_Control, IN.uv_Control);
+	half3 col;
+	half4 splat0 = 0.5f * (tex2D (_Splat0, IN.uv_Splat0) + tex2D (_Splat0, _mixUVTile4 * IN.uv_Splat0));
+	half4 splat1 = 0.5f * (tex2D (_Splat1, IN.uv_Splat1) + tex2D (_Splat1, _mixUVTile5 * IN.uv_Splat1));
+	half4 splat2 = 0.5f * (tex2D (_Splat2, IN.uv_Splat2) + tex2D (_Splat2, _mixUVTile6 * IN.uv_Splat2));
+	half4 splat3 = 0.5f * (tex2D (_Splat3, IN.uv_Splat3) + tex2D (_Splat3, _mixUVTile7 * IN.uv_Splat3));
+	// 4 splats, normals, and specular settings
+	
+	col  += splat_control.r * splat0.rgb;
+	o.Normal = splat_control.r * UnpackNormal(tex2D(_BumpMap4, IN.uv_Splat0));
+	o.Gloss = splat0.a * splat_control.r;
+	o.Specular = 0.5 * splat_control.r;
+
+	col += splat_control.g * splat1.rgb;
+	o.Normal += splat_control.g * UnpackNormal(tex2D(_BumpMap5, IN.uv_Splat1));
+	o.Gloss += splat1.a * splat_control.g;
+	o.Specular += 0.5 * splat_control.g;
+	
+	col += splat_control.b * splat2.rgb;
+	o.Normal += splat_control.b * UnpackNormal(tex2D(_BumpMap6, IN.uv_Splat2));
+	o.Gloss += splat2.a * splat_control.b;
+	o.Specular += 0.5 * splat_control.b;
+	
+	col += splat_control.a * splat3.rgb;
+	o.Normal += splat_control.a * UnpackNormal(tex2D(_BumpMap7, IN.uv_Splat3));
+	o.Gloss += splat3.a * splat_control.a;
+	o.Specular += 0.5 * splat_control.a;
+
+	o.Albedo = col;
+	o.Normal = normalize(o.Normal);
+	o.Alpha = 1;
+}
+ENDCG  
+}
+
+Fallback off
+}
+</SHADER5>
+<SHADER7>
+/* Note: Original Tri-Planar shader by FarFarer 
+   ============================================
+*/
+Shader "Hidden/TerrainEngine/Splatmap/Lightmap-AddPass" {
+	Properties {
+		_Control ("Control (RGBA)", 2D) = "black" {}
+		_Splat3 ("Layer 3 (A)", 2D) = "white" {}
+		_Splat2 ("Layer 2 (B)", 2D) = "white" {}
+		_Splat1 ("Layer 1 (G)", 2D) = "white" {}
+		_Splat0 ("Layer 0 (R)", 2D) = "white" {}
+	}
+	SubShader {
+		Tags {"SplatCount" = "4" "Queue" = "Geometry-99" "IgnoreProjector"="True" "RenderType" = "Opaque"}
+		
+		CGPROGRAM
+			#pragma surface surf Terrain vertex:vert exclude_path:prepass decal:add
+			#pragma target 3.0
+	
+			sampler2D _Control;
+
+			struct SurfaceOutputTerrain {
+				fixed3 Albedo;
+				fixed3 Normal;
+				fixed4 Light;
+				fixed3 Emission;
+				fixed Specular;
+				fixed Alpha;
+			};
+
+			inline fixed4 LightingTerrain (SurfaceOutputTerrain s, fixed3 lightDir, fixed3 viewDir, fixed atten)
+			{
+				float4 result;
+				result.rgb = (s.Albedo * s.Light.x) + ( pow(s.Light.y, s.Light.w * 128) * s.Light.z );
+				result.rgb *= _LightColor0.rgb * atten * 2;
+				result.a = 1.0;
+				return result;
+			}
+									
+			struct Input {
+				float2	uv_Control;
+				float3	worldPos;
+				float3	worldNormal;
+				float3	lightDir;
+				float3	viewDir;
+			};
+	
+			void vert(inout appdata_full v, out Input o) {
+				o.worldPos = mul(_Object2World, v.vertex).xyz;
+				o.worldNormal = mul(_Object2World, float4(v.normal, 0.0)).xyz;
+				o.lightDir = normalize(ObjSpaceLightDir(v.vertex));
+				o.viewDir = normalize(ObjSpaceViewDir(v.vertex));
+			}
+	
+			sampler2D _Splat0, _Splat1, _Splat2, _Splat3;
+			sampler2D _BumpMap4, _BumpMap5, _BumpMap6, _BumpMap7;
+			sampler2D _SpecMap4, _SpecMap5, _SpecMap6, _SpecMap7;
+			float _TerrainTexScale4, _TerrainTexScale5, _TerrainTexScale6, _TerrainTexScale7;
+			float _mixUVTile4,_mixUVTile5,_mixUVTile6,_mixUVTile7;
+	
+			void surf (Input IN, inout SurfaceOutputTerrain o) {
+			// INITIALISE THE CONTROL SPLAT FOR TERRAIN
+				fixed4 splat_control = tex2D(_Control, IN.uv_Control);
+				fixed alpha = splat_control.r;
+				alpha = lerp ( alpha, 1.0, splat_control.g );
+				alpha = lerp ( alpha, 1.0, splat_control.b );
+				alpha = lerp ( alpha, 1.0, splat_control.a );
+	
+			// INITIALISE THE VARIABLES FOR TRIPLANAR PROJECTION
+				float3 worldNormal = normalize(IN.worldNormal);
+				float3 projNormal = saturate(pow(worldNormal * 1.5, 4));
+	
+			// INITIALISE VARIABLES WE'LL NEED
+				float3 tangent;
+				float3 binormal;
+				float3x3 rotation;
+				float3 lightDirT;
+				float3 viewDirT;
+				
+				float2 uv;
+				float2 uv0;
+				float2 uv1;
+				float2 uv2;
+				float2 uv3;
+				
+				float3 h;
+				float4 tempNormal;
+				float3 normal;
+				
+				fixed3 albedoX;
+				fixed3 albedoY;
+				fixed3 albedoZ;
+				fixed4 lightX;
+				fixed4 lightY;
+				fixed4 lightZ;
+	
+			// CALCULATE X FOR ALL
+			
+				// UV
+				uv = IN.worldPos.zy;
+				uv0 = uv * _TerrainTexScale4;
+				uv1 = uv * _TerrainTexScale5;
+				uv2 = uv * _TerrainTexScale6;
+				uv3 = uv * _TerrainTexScale7;
+	
+				// Tangent
+				tangent = float3(0, 0, 1);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.x, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoX = (tex2D(_Splat0, uv0).rgb + (tex2D(_Splat0, uv0 * _mixUVTile4).rgb)) * 0.5f * splat_control.r;
+				albedoX += (tex2D(_Splat1, uv1).rgb + (tex2D(_Splat1, uv1 * _mixUVTile5).rgb)) * 0.5f * splat_control.g;
+				albedoX += (tex2D(_Splat2, uv2).rgb + (tex2D(_Splat2, uv2 * _mixUVTile6).rgb)) * 0.5f * splat_control.b;
+				albedoX += (tex2D(_Splat3, uv3).rgb + (tex2D(_Splat3, uv3 * _mixUVTile7).rgb)) * 0.5f * splat_control.a;
+				
+				// Normal
+				tempNormal = tex2D (_BumpMap4, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap5, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap6, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap7, uv3) * splat_control.a;
+				tempNormal = lerp(float4(0.0, 0.5, 0.0, 0.5), tempNormal, alpha);
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightX.zw = tex2D (_SpecMap4, uv0).rg * splat_control.r;
+				lightX.zw += tex2D (_SpecMap5, uv1).rg * splat_control.g;
+				lightX.zw += tex2D (_SpecMap6, uv2).rg * splat_control.b;
+				lightX.zw += tex2D (_SpecMap7, uv3).rg * splat_control.a;
+				lightX.zw = lerp(fixed2(0.0, 0.1), lightX.zw, alpha);
+				
+				// Lighting Values
+				lightX.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightX.y = saturate(dot(normal, h));
+	
+			// CALCULATE Y FOR ALL
+			
+				// UV
+				uv = IN.worldPos.xz;
+				uv0 = uv * _TerrainTexScale4;
+				uv1 = uv * _TerrainTexScale5;
+				uv2 = uv * _TerrainTexScale6;
+				uv3 = uv * _TerrainTexScale7;
+	
+				// Tangent
+				tangent = float3(1, 0, 0);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.y, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoY = (tex2D(_Splat0, uv0).rgb + (tex2D(_Splat0, uv0 * _mixUVTile4).rgb)) * 0.5f * splat_control.r;
+				albedoY += (tex2D(_Splat1, uv1).rgb + (tex2D(_Splat1, uv1 * _mixUVTile5).rgb)) * 0.5f * splat_control.g;
+				albedoY += (tex2D(_Splat2, uv2).rgb + (tex2D(_Splat2, uv2 * _mixUVTile6).rgb)) * 0.5f * splat_control.b;
+				albedoY += (tex2D(_Splat3, uv3).rgb + (tex2D(_Splat3, uv3 * _mixUVTile7).rgb)) * 0.5f * splat_control.a;
+				
+				// Normal
+				tempNormal = tex2D (_BumpMap4, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap5, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap6, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap7, uv3) * splat_control.a;
+				tempNormal = lerp(float4(0.0, 0.5, 0.0, 0.5), tempNormal, alpha);
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightY.zw = tex2D (_SpecMap4, uv0).rg * splat_control.r;
+				lightY.zw += tex2D (_SpecMap5, uv1).rg * splat_control.g;
+				lightY.zw += tex2D (_SpecMap6, uv2).rg * splat_control.b;
+				lightY.zw += tex2D (_SpecMap7, uv3).rg * splat_control.a;
+				lightY.zw = lerp(fixed2(0.0, 0.1), lightY.zw, alpha);
+				
+				// Lighting Values
+				lightY.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightY.y = saturate(dot(normal, h));
+	
+			// CALCULATE Z FOR ALL
+			
+				// UV
+				uv = IN.worldPos.xy;
+				uv.x *= -1;
+				uv0 = uv * _TerrainTexScale4;
+				uv1 = uv * _TerrainTexScale5;
+				uv2 = uv * _TerrainTexScale6;
+				uv3 = uv * _TerrainTexScale7;
+	
+				// Tangent
+				tangent = float3(-1, 0, 0);
+				
+				// Light and View Vectors
+				binormal = cross(worldNormal, tangent) * (step(worldNormal.z, 0) * 2 - 1);
+				rotation = float3x3(tangent, binormal, worldNormal);
+				lightDirT = mul(rotation, IN.lightDir);
+				viewDirT = mul(rotation, IN.viewDir);
+				
+				// Albedo
+				albedoZ = (tex2D(_Splat0, uv0).rgb + (tex2D(_Splat0, uv0 * _mixUVTile4).rgb)) * 0.5f * splat_control.r;
+				albedoZ += (tex2D(_Splat1, uv1).rgb + (tex2D(_Splat1, uv1 * _mixUVTile5).rgb)) * 0.5f * splat_control.g;
+				albedoZ += (tex2D(_Splat2, uv2).rgb + (tex2D(_Splat2, uv2 * _mixUVTile6).rgb)) * 0.5f * splat_control.b;
+				albedoZ += (tex2D(_Splat3, uv3).rgb + (tex2D(_Splat3, uv3 * _mixUVTile7).rgb)) * 0.5f * splat_control.a;
+				
+				// Normal
+				tempNormal = tex2D (_BumpMap4, uv0) * splat_control.r;
+				tempNormal += tex2D (_BumpMap5, uv1) * splat_control.g;
+				tempNormal += tex2D (_BumpMap6, uv2) * splat_control.b;
+				tempNormal += tex2D (_BumpMap7, uv3) * splat_control.a;
+				tempNormal = lerp(float4(0.0, 0.5, 0.0, 0.5), tempNormal, alpha);
+				normal = UnpackNormal(tempNormal);
+				
+				// Specular
+				lightZ.zw = tex2D (_SpecMap4, uv0).rg * splat_control.r;
+				lightZ.zw += tex2D (_SpecMap5, uv1).rg * splat_control.g;
+				lightZ.zw += tex2D (_SpecMap6, uv2).rg * splat_control.b;
+				lightZ.zw += tex2D (_SpecMap7, uv3).rg * splat_control.a;
+				lightZ.zw = lerp(fixed2(0.0, 0.1), lightZ.zw, alpha);
+				
+				// Lighting Values
+				lightZ.x = saturate(dot(normal, lightDirT));
+				h = normalize(lightDirT + viewDirT);
+				lightZ.y = saturate(dot(normal, h));
+				
+				o.Albedo = albedoZ;
+				o.Albedo = lerp(o.Albedo, albedoY, projNormal.y);
+				o.Albedo = lerp(o.Albedo, albedoX, projNormal.x);
+				
+				o.Light = lightZ;
+				o.Light = lerp(o.Light, lightY, projNormal.y);
+				o.Light = lerp(o.Light, lightX, projNormal.x);
+				
+				o.Alpha = 0.0;
+			}
+		ENDCG
+	}
+	
+	Fallback Off
+}		
+</SHADER7>
