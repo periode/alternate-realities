@@ -21,7 +21,7 @@ public class PanelManager : MonoBehaviour {
 			for (int j = 0; j < numberOfBooksPerShelf; j++) {
 				GameObject b = GameObject.Instantiate(book, new Vector3 (transform.localPosition.x + j*bookSpacing, transform.localPosition.y + i*shelfSpacing, transform.localPosition.z), Quaternion.identity);
 				b.transform.SetParent (transform);
-				b.transform.localPosition = new Vector3 (b.transform.localPosition.x + rowNumber, b.transform.localPosition.y, b.transform.localPosition.z);
+				b.transform.localPosition = new Vector3 (b.transform.localPosition.x + rowNumber*2.5f, b.transform.localPosition.y, b.transform.localPosition.z);
 				//b.transform.localRotation = transform.rotation;
 			}
 		}

@@ -731,12 +731,12 @@ PlayerSettings:
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
-    UNet: 0
+    UNet: 1
     Unity_Ads: 0
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 4a55227b-4d14-483c-8f9a-6fd1ca071b7e
-  projectName: 
+  projectName: BabelVR
   organizationId: nyuadim
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
