@@ -1,3 +1,0 @@
-Project: Wonder Tunnel
-
-This project takes you for a gentle ride inside a dark dreamy tunnel and if you look up at the stars, they will shine back at you. Every iteration the tunnel is created with random rotations, and stars are generated at random place. Initially I wanted to create funky disco vibe but ended up making something more relaxed and tranquil.

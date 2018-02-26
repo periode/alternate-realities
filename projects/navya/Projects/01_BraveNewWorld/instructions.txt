@@ -1,6 +1,0 @@
-Instructions
-
-Your goal is to do whatever in your power to escape the impending disaster that is upon you. You may pound against the ground by clicking the mouse. 
-
-Expected behavior - The disaster must slow down by your pounding. Pounding the walls may cause other disturbances in the environment. You have the choice to pound or not. 
-Good luck.

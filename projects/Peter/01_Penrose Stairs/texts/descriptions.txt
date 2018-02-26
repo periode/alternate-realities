@@ -1,9 +1,0 @@
-Project: Penrose Stairs
-
-
-This project initally started as an attempt to recreate Escher's illusional stair onto the unity world.
-While creating and researching more, however, I discovered that the whole Escher's stair concept only works from a specific point in the staircase. In other words, you cannot continue the "trapped" effect in any other part of the stairs.
-
-As a big part of the artist intent behind the project was to demonstrate the never-ending cycle and continuation of what seems to be a meaningless repetition, it was necessary that the stairs were "walkable". The stairs are now hence walkable, continually (and quite visibly) rising up. 
-
-The user can decide to put an end to this continuation should they choose to, by staring away from the steps that is directly in their face, and looking away into the ultimate goal. 

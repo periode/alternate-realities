@@ -1,3 +1,0 @@
-Hold Alt while moving the Mouse to look around.
-
-Elements in the room change appearance while you don't look directly at them. Once you do, they fade back to their original state.

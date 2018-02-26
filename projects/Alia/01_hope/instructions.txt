@@ -1,4 +1,0 @@
-Instructions
-
-To pass the instruction screen at the beginning, the user presses the 'space' key (to be replaced when applied for VR). To move forward, the user needs to keep
-'looking forward' (both literally and metaphorically, I guess). When the user looks down or to the sides, the movement stops.
