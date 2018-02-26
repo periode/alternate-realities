@@ -815,6 +815,11 @@ Prefab:
       propertyPath: m_TagString
       value: Teleportable
       objectReference: {fileID: 0}
+    - target: {fileID: 114822192338658004, guid: 73d51aeaaf82b234c8bf7c6578e5f9db,
+        type: 2}
+      propertyPath: roomSize
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73d51aeaaf82b234c8bf7c6578e5f9db, type: 2}
   m_IsPrefabParent: 0

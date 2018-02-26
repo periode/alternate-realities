@@ -5,10 +5,11 @@ using UnityEngine;
 public class Librarian : MonoBehaviour {
 
 	public GameObject shelf;
-	public float roomSize = 18.0f;
+	public float roomSize = 13.0f;
 
 	// Use this for initialization
 	void Start () {
+		roomSize = 13.0f;
 		for (float i = 0; i < 6; i += 1) {
 			if (i != 0 && i != 3) {
 				for (int j = 0; j < 5; j++) {
