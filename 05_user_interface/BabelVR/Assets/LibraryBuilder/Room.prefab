@@ -81,7 +81,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -97,7 +96,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -122,9 +120,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114822192338658004
@@ -135,8 +133,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129422250289978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee468962455f2e84da219571be21e88f, type: 3}
+  m_Script: {fileID: 11500000, guid: b0bc2226216770a4098f556455a60dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelf: {fileID: 1986671604761558, guid: c485efb4ec0336c40911323ed5c8f426, type: 2}
-  roomSize: 7
+  shelf: {fileID: 0}
+  roomSize: 13
