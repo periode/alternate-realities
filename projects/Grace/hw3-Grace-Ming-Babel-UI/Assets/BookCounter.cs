@@ -17,6 +17,7 @@ public class BookCounter : MonoBehaviour {
 		bookInteraction = this.GetComponent<VRTK_InteractableObject>();
 		bookCover.text = GetComponent<BookContents> ().bookTitle;
 		bookSpine.text = GetComponent<BookContents> ().bookTitle;
+		GetComponent<Renderer> ().material.color = Random.ColorHSV (0f, 1f, 0.3f, 0.3f, 0.5f, 1f);
 	}
 	
 	// Update is called once per frame

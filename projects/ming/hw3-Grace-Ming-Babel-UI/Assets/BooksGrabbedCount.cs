@@ -19,7 +19,7 @@ public class BooksGrabbedCount : MonoBehaviour {
 	}
 	void SetCountText ()
 	{
-		countText.text = "You grabbed " + booksGrabbed.ToString () + " books";
+		countText.text = "You read " + booksGrabbed.ToString () + " books";
 
 	}		
 }
