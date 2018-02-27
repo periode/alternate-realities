@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: 97806e8157e5432468010a4fc8de4a5e
+  productGUID: 806af5375540a434d95ddf96c535990b
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -268,7 +268,7 @@ PlayerSettings:
       m_Icon: {fileID: 0}
       m_Width: 1
       m_Height: 1
-      m_Kind: 44706
+      m_Kind: 44587
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
@@ -736,7 +736,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 4a55227b-4d14-483c-8f9a-6fd1ca071b7e
-  projectName: BabelVR
+  projectName: 
   organizationId: nyuadim
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
