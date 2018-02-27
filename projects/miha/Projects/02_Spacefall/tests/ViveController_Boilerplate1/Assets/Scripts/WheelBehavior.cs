@@ -5,18 +5,21 @@ using UnityEngine;
 public class WheelBehavior : MonoBehaviour {
 
 	GameObject car;
+	GameObject player;
 	float time = 0;
 //	float speed 
 	// Use this for initialization
 	void Start () {
 		car = GameObject.Find ("Car");
+		player = GameObject.Find ("[CameraRig]");
 //		StartCoroutine(RotateForFiveSeconds ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		this.transform.Rotate (0, 0, Time.deltaTime,Space.Self);
-//		car.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
+		this.transform.Rotate (0, 0, Time.deltaTime,Space.Self);
+		car.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
+		player.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
 //		time += Time.deltaTime;
 //		transform.Rotate(Vector3.right * Time.deltaTime*10);
 //		Debug.Log ("time is:" + time + " and delta time is:" + Time.deltaTime);
