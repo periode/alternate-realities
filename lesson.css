@@ -22,6 +22,7 @@ header a{
 }
 
 main{
+	position: absolute;
 	margin-left: 10%;
 	width: 80%;
 }
@@ -30,21 +31,41 @@ hr {
 	border: none;
 	height: 2px;
 	background-color: black;
+	float: left;
+	width: 100%;
 }
 
 img {
 	max-height: 300px;
+	max-width: 90%;
 }
 
 .concept-group{
+	position: relative;
 	width: 100%;
+	height: auto;
+	float: left;
 }
 
 .prep-group{
+	position: relative;
 	font-size: 1.2em;
 	width: 50%;
+	float: left;
 }
 
 .note-group{
+	position: relative;
 	width: 50%;
+	float: left;
+	overflow: auto;
+	text-align: left;
+	overflow: auto;
+}
+
+.note {
+	position: relative;
+	margin-bottom: 10px;
+	width: 100%;
+	overflow: auto;
 }
