@@ -13,6 +13,9 @@ public class InputManager : MonoBehaviour {
 
 	private Interactions InteractionManager;
 
+	public bool triggerPress = false;
+	private bool handOnTheWheel;
+
 
 	void Awake()
 	{
@@ -35,13 +38,14 @@ public class InputManager : MonoBehaviour {
 		// Getting the Trigger press
 		if (Controller.GetHairTriggerDown())
 		{
-			Debug.Log(gameObject.name + " Trigger Press");
-			if (gameObject.name == "Controller (right)") {
-				InteractionManager.right_trigger_press = true;
-			} else if (gameObject.name == "Controller (left)") {
-				InteractionManager.left_trigger_press = true;
-			}
-
+			triggerPress = true;
+//			Debug.Log(gameObject.name + " Trigger Press");
+//			if (gameObject.name == "Controller (right)") {
+//				InteractionManager.right_trigger_press = true;
+//			} else if (gameObject.name == "Controller (left)") {
+//				InteractionManager.left_trigger_press = true;
+//			}
+//
 			//InteractionManager.ActiveHairlineTrigger(gameObject.name);
 
 			//if we're on controller right
@@ -57,12 +61,13 @@ public class InputManager : MonoBehaviour {
 		// Getting the Trigger Release
 		if (Controller.GetHairTriggerUp())
 		{
-			if (gameObject.name == "Controller (right)") {
-				InteractionManager.right_trigger_press = false;
-			} else if (gameObject.name == "Controller (left)") {
-				InteractionManager.left_trigger_press = false;
-			}
-			Debug.Log(gameObject.name + " Trigger Release");
+			triggerPress = false;
+//			if (gameObject.name == "Controller (right)") {
+//				InteractionManager.right_trigger_press = false;
+//			} else if (gameObject.name == "Controller (left)") {
+//				InteractionManager.left_trigger_press = false;
+//			}
+//			Debug.Log(gameObject.name + " Trigger Release");
 		}
 
 		// Getting the Grip Press
@@ -77,4 +82,19 @@ public class InputManager : MonoBehaviour {
 			Debug.Log(gameObject.name + " Grip Release");
 		}
 	}
+
+
+	public bool GetTriggerPress(){
+		return triggerPress;
+	}
+
+	public void HandIsOnTheWheel(bool _newStatus){
+		handOnTheWheel = _newStatus;
+	}
+
+	public bool GetHandOnTheWheel(){
+		return handOnTheWheel;
+	}
+
+	public static 
 }

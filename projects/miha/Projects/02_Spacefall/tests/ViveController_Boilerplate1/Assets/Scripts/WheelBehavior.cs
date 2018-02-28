@@ -4,38 +4,44 @@ using UnityEngine;
 
 public class WheelBehavior : MonoBehaviour {
 
-	GameObject car;
-	GameObject player;
+	GameObject Car;
+	GameObject Player;
 	float time = 0;
+	public bool rotateWheel = false;
 //	float speed 
 	// Use this for initialization
 	void Start () {
-		car = GameObject.Find ("Car");
-		player = GameObject.Find ("[CameraRig]");
+		Car = GameObject.Find ("Car");
+		Player = GameObject.Find ("[CameraRig]");
 //		StartCoroutine(RotateForFiveSeconds ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.Rotate (0, 0, Time.deltaTime,Space.Self);
-		car.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
-		player.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
+//		this.transform.Rotate (0, 0, Time.deltaTime,Space.Self);
+//		car.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
+//		player.transform.Rotate(0, Time.deltaTime, 0,Space.Self);
 //		time += Time.deltaTime;
 //		transform.Rotate(Vector3.right * Time.deltaTime*10);
 //		Debug.Log ("time is:" + time + " and delta time is:" + Time.deltaTime);
 	}
 
-	IEnumerator RotateForFiveSeconds(){
+	public bool GetWheelRotationStatus(){
+		return rotateWheel;
+	}
 
-		float elapsed_time = 0;
-		float duration = 10.0F;
-		float wheel_rotation = 0;
+	public void SetWheelRotationStatus(bool _newStatus){
+		rotateWheel = _newStatus;
+	}
 
-		while(elapsed_time < duration){
-			elapsed_time += Time.deltaTime;
-			this.transform.Rotate (0, 0, 1,Space.Self);
-			car.transform.Rotate(0, 1, 0,Space.Self);
-			yield return null;
-		}
-	} 
+
+	public void StartRotation(){
+		//IEnumerator?
+
+	
+	}
+
+	public void StopRotation(){
+
+	}
 }
