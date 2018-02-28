@@ -96,5 +96,5 @@ public class InputManager : MonoBehaviour {
 		return handOnTheWheel;
 	}
 
-	public static 
+//	public static 
 }
