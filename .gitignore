@@ -3,6 +3,7 @@
 **/[Oo]bj/
 **/GoogleVR/
 **/SteamVR/
+**/VRTK/
 *.pidb.meta
 *.pdb.meta
 
@@ -18,3 +19,6 @@
 ._*
 .Trashed
 notes/
+
+# ==== Visual Studio
+.vs

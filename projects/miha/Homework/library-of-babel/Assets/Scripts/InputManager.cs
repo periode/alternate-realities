@@ -11,10 +11,13 @@ public class InputManager : MonoBehaviour {
 	// Getting a reference to the controller Interface
 	private SteamVR_Controller.Device Controller;
 
+	CanvasBehavior canvas;
+
 	void Awake()
 	{
 		// initialize the trackedObj to the component of the controller to which the script is attached
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
+		canvas = GameObject.Find ("Canvas").GetComponent<CanvasBehavior> ();
 	}
 
 	// Update is called once per frame
@@ -32,6 +35,10 @@ public class InputManager : MonoBehaviour {
 		if (Controller.GetHairTriggerDown())
 		{
 			Debug.Log(gameObject.name + " Trigger Press");
+
+			if (canvas.IsVisible () == true) {
+				canvas.MakeInvisible ();
+			}
 
 			//if we're on controller right
 			if(gameObject.name == "Controller (right)"){

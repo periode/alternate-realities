@@ -1,0 +1,28 @@
+The Parameters:
+[Brick]
+Brick_Roughness = How damaged the surfaces of the bricks are
+Brick_Damage	= How damaged the edges of the bricks are
+Brick_Amount	= X, Y Amount of Bricks
+
+[Color]
+Gap_Color		= Which color the Gap is
+Brick_Color		= first brick Color
+2nd_Color		= second brick Color
+
+[Leak]
+Switch			= Leaks enabled or not 
+Leak			= Leak amount 0(full) 1 (less)
+Warp_intensity  = Leak Width
+Leak Flow		= Leak Order
+Pattern_Lenght	= Leak Lenght
+Pattern_width	= Leak Width
+Leak_Color		= Leak Color with Alpha 
+
+
+If you have no experience with Substancefiles look here.
+http://docs.unity3d.com/Manual/class-ProceduralMaterial.html
+https://unity3d.com/learn/tutorials/modules/intermediate/graphics/substance/introduction
+
+
+Change Parameters via Scripting:
+http://docs.unity3d.com/ScriptReference/ProceduralMaterial.html
