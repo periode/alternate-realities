@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: d688bef69ecfc4f4eb8493109175a662
+timeCreated: 1519721181
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Camera
+    100002: Capot
+    100004: 'Carosserie '
+    100006: Carosserie .001
+    100008: Carosserie .002
+    100010: Carosserie .003
+    100012: Carosserie .004
+    100014: Carosserie .005
+    100016: Carosserie .006
+    100018: Carosserie .007
+    100020: Carosserie .008
+    100022: Circle
+    100024: Circle.001
+    100026: Circle.002
+    100028: Circle.003
+    100030: Circle.004
+    100032: Circle.005
+    100034: Circle.006
+    100036: Circle.007
+    100038: Circle.008
+    100040: Circle.009
+    100042: Circle.010
+    100044: Circle.011
+    100046: Circle.012
+    100048: Circle.013
+    100050: Circle.014
+    100052: Circle.024
+    100054: Circle.029
+    100056: Circle.030
+    100058: Coffre
+    100060: Cube.002
+    100062: Cylinder
+    100064: Icosphere
+    100066: Icosphere.001
+    100068: Icosphere.003
+    100070: Plane
+    100072: Plane.001
+    100074: Plane.002
+    100076: Plane.003
+    100078: Plane.004
+    100080: Plane.005
+    100082: Plane.007
+    100084: Plane.008
+    100086: Portes
+    100088: //RootNode
+    100090: Text
+    400000: Camera
+    400002: Capot
+    400004: 'Carosserie '
+    400006: Carosserie .001
+    400008: Carosserie .002
+    400010: Carosserie .003
+    400012: Carosserie .004
+    400014: Carosserie .005
+    400016: Carosserie .006
+    400018: Carosserie .007
+    400020: Carosserie .008
+    400022: Circle
+    400024: Circle.001
+    400026: Circle.002
+    400028: Circle.003
+    400030: Circle.004
+    400032: Circle.005
+    400034: Circle.006
+    400036: Circle.007
+    400038: Circle.008
+    400040: Circle.009
+    400042: Circle.010
+    400044: Circle.011
+    400046: Circle.012
+    400048: Circle.013
+    400050: Circle.014
+    400052: Circle.024
+    400054: Circle.029
+    400056: Circle.030
+    400058: Coffre
+    400060: Cube.002
+    400062: Cylinder
+    400064: Icosphere
+    400066: Icosphere.001
+    400068: Icosphere.003
+    400070: Plane
+    400072: Plane.001
+    400074: Plane.002
+    400076: Plane.003
+    400078: Plane.004
+    400080: Plane.005
+    400082: Plane.007
+    400084: Plane.008
+    400086: Portes
+    400088: //RootNode
+    400090: Text
+    2000000: Camera
+    2100000: Chrome
+    2100002: Pneu
+    2100004: Pneu2
+    2100006: Cuire
+    2100008: Laniere
+    2100010: Cuire levier de vitesse_
+    2100012: Material
+    2100014: Headlights  bottom
+    2100016: Mirror
+    2100018: Wood
+    2100020: Leather volant
+    2100022: Verre
+    2100024: Compteur
+    2100026: Aiguille
+    2100028: Tableau de bord
+    2100030: Material.002
+    2100032: Lamp
+    2100034: Carroserie
+    2100036: Tapis sol
+    2300000: Capot
+    2300002: 'Carosserie '
+    2300004: Carosserie .001
+    2300006: Carosserie .002
+    2300008: Carosserie .003
+    2300010: Carosserie .004
+    2300012: Carosserie .005
+    2300014: Carosserie .006
+    2300016: Carosserie .007
+    2300018: Carosserie .008
+    2300020: Circle
+    2300022: Circle.001
+    2300024: Circle.002
+    2300026: Circle.003
+    2300028: Circle.004
+    2300030: Circle.005
+    2300032: Circle.006
+    2300034: Circle.007
+    2300036: Circle.008
+    2300038: Circle.009
+    2300040: Circle.010
+    2300042: Circle.011
+    2300044: Circle.012
+    2300046: Circle.013
+    2300048: Circle.014
+    2300050: Circle.024
+    2300052: Circle.029
+    2300054: Circle.030
+    2300056: Coffre
+    2300058: Cube.002
+    2300060: Cylinder
+    2300062: Icosphere
+    2300064: Icosphere.001
+    2300066: Icosphere.003
+    2300068: Plane
+    2300070: Plane.001
+    2300072: Plane.002
+    2300074: Plane.003
+    2300076: Plane.004
+    2300078: Plane.005
+    2300080: Plane.007
+    2300082: Plane.008
+    2300084: Portes
+    2300086: Text
+    3300000: Capot
+    3300002: 'Carosserie '
+    3300004: Carosserie .001
+    3300006: Carosserie .002
+    3300008: Carosserie .003
+    3300010: Carosserie .004
+    3300012: Carosserie .005
+    3300014: Carosserie .006
+    3300016: Carosserie .007
+    3300018: Carosserie .008
+    3300020: Circle
+    3300022: Circle.001
+    3300024: Circle.002
+    3300026: Circle.003
+    3300028: Circle.004
+    3300030: Circle.005
+    3300032: Circle.006
+    3300034: Circle.007
+    3300036: Circle.008
+    3300038: Circle.009
+    3300040: Circle.010
+    3300042: Circle.011
+    3300044: Circle.012
+    3300046: Circle.013
+    3300048: Circle.014
+    3300050: Circle.024
+    3300052: Circle.029
+    3300054: Circle.030
+    3300056: Coffre
+    3300058: Cube.002
+    3300060: Cylinder
+    3300062: Icosphere
+    3300064: Icosphere.001
+    3300066: Icosphere.003
+    3300068: Plane
+    3300070: Plane.001
+    3300072: Plane.002
+    3300074: Plane.003
+    3300076: Plane.004
+    3300078: Plane.005
+    3300080: Plane.007
+    3300082: Plane.008
+    3300084: Portes
+    3300086: Text
+    4300000: Circle.012
+    4300002: Circle.011
+    4300004: Circle.008
+    4300006: Circle.007
+    4300008: Circle.004
+    4300010: Circle.001
+    4300012: Plane.008
+    4300014: Plane.007
+    4300016: Plane.001
+    4300018: Plane.004
+    4300020: Plane.003
+    4300022: Plane
+    4300024: Circle.030
+    4300026: Circle.029
+    4300028: Plane.005
+    4300030: Carosserie .008
+    4300032: Carosserie .007
+    4300034: Cylinder
+    4300036: Carosserie .006
+    4300038: Circle.024
+    4300040: Icosphere.003
+    4300042: Cube.002
+    4300044: Circle.014
+    4300046: Circle.010
+    4300048: Circle.013
+    4300050: Circle.009
+    4300052: Circle.006
+    4300054: Text
+    4300056: Circle.005
+    4300058: Circle
+    4300060: Carosserie .005
+    4300062: Carosserie .004
+    4300064: Circle.003
+    4300066: Carosserie .003
+    4300068: Plane.002
+    4300070: Icosphere.001
+    4300072: Icosphere
+    4300074: Carosserie .001
+    4300076: Carosserie .002
+    4300078: Coffre
+    4300080: Portes
+    4300082: 'Carosserie '
+    4300084: Capot
+    4300086: Circle.002
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
