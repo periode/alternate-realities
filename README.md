@@ -1,19 +1,11 @@
 # Alternate Realities
 Repository for the code, readings and resources for the Alternate Realities class at NYU AD Spring 2017
 
-### Instructor
-Pierre Depaz (pierre.depaz@nyu.edu)
+### Contact
+Pierre Depaz (pierre.depaz@nyu.edu) - C3-032
 
-
-### Meeting Time
-Tuesday — 16:05 - 17:20
-
-Thursday — 14:40 - 17:20
-
-
-### Office
-C3-032
-
+### Course notes
+[https://periode.github.io/alternate-realities/](https://periode.github.io/alternate-realities/)
 
 ### Office hours
 Wednesday — 13:00 - 18:00
