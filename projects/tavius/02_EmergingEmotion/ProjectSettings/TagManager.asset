@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - emotion
+  - joy
+  - fear
+  - compatibleEmotion
+  - incompatibleEmotion
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - emotions
   - 
   - 
   - 
