@@ -9,6 +9,7 @@ TagManager:
   - fear
   - compatibleEmotion
   - incompatibleEmotion
+  - goggles
   layers:
   - Default
   - TransparentFX
