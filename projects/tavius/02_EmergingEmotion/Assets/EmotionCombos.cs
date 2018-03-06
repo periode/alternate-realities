@@ -19,69 +19,53 @@ public class EmotionCombos : MonoBehaviour {
 				case "JOY":
 					result = "ECS";
 					return result;
-					break;
 				case "SAD":
 					result = "MEL";
 					return result;
-					break;
 				case "FEA":
 					result = "SUR";
 					return result;
-					break;
 				default:
 					result = "nope";
 					return result;
-					break;
 				}
-				break;
 			// SADNESS &
 			case "SAD":
 				switch (L) {
 				case "JOY":
 					result = "MEL";
 					return result;
-					break;
 			// Unique
 				case "SAD":
 					result = "DES";
 					return result;
-					break;
 				case "FEA":
 					result = "ANX";
 					return result;
-					break;
 				default:
 					result = "nope";
 					return result;
-					break;
 				}
-				break;
 			// FEAR &
 			case "FEA":
 				switch (L) {
 				case "JOY":
 					result = "SUR";
 					return result;
-					break;
 				case "SAD":
 					result = "ANX";
 					return result;
-					break;
 			// Unique
 				case "FEA":
 					result = "TER";
 					return result;
-					break;
 				default:
 					result = "nope";
 					return result;
-					break;
 				}
-				break;
 			default:
 				result = "nope";
 				return result;
-				break;
 			}
 				//      JOY
 			    //      SAD
