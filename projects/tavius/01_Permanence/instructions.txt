@@ -1,0 +1,17 @@
+
+__Permanence__ is a virtual reality project guided by gaze input.
+The user is fixed at a point in space, but allowed to look in all directions.
+Gazing at (observing) the central rock will activate the space.
+Other rocks and tree objects can now be detected by the user's gaze.
+A durational (~2sec.) observance of these other objects will reveal their forms.
+
+    A next step would be attaching the change in opacity to a lerp, to fade in.
+    (See 01_Permanence/Assets/Scripts/TODO.cs for other future ideas.)
+
+"Ground Painting" is unlocked by fully observing a set number (~20) of objects.
+"Ground Painting" is added to the gaze input features.
+A much larger area of the terrain can now be freely painted by looking at it.
+It is up to the user to decide when they have seen enough.
+Some may insist on revealing 100% of the environment.
+Others may be satisfied with having a larger platform surrounding them.
+There is no programmed 'end' to the project.
