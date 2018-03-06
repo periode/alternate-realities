@@ -36,7 +36,8 @@ public class Controllers : MonoBehaviour {
 
 	void RightTriggerDown() {
 		if(this.CompareTag("emotion")){
-			rightEmotion = this;
+			rightEmotion = this.raycast;
+			rightEmotion.AddComponent<EmotionCombos>();
 			//Attach rightEmotion to rightContactPoint
 			rightHolding = true;
 		}
@@ -44,7 +45,7 @@ public class Controllers : MonoBehaviour {
 
 	void RightTriggerUp() {
 		if(rightHolding){
-			rightEmotion.GetComponent<Collider>().isTrigger = true;
+			rightEmotion.RemoveComponent<EmotionCombos>();
 			rightEmotion = null; // Detach rightContactPoint?
 			rightHolding = false;
 		}
@@ -88,13 +89,14 @@ public class Controllers : MonoBehaviour {
 		}
 
 		// Make sure only the left orb reacts with the right:
-		int leftTest = leftEmotion.GetInstanceID; 
+		int leftTest = leftEmotion.GetInstanceID(); 
 		Debug.Log(leftTest);
 		Debug.Log(otherEmotion.GetInstanceID());
 		if (leftEmotion.getInstanceID() != otherEmotion.getinstanceID()) {
 			Debug.Log ("Try to combine objects you are holding");
 		} else {
 			// Get distance between the colliding objects:
+			// my_texture = GameObject.Find("World").gameObject.GetComponent<TexturePainting>();
 			string typeOfEmotion = tryCombo(otherEmotion, rightEmotion);
 			// If the emotions are not compatible, repel:
 			if (typeOfEmotion.Equals("nope")) {
