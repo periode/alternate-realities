@@ -18,6 +18,6 @@ NEED: Prefabs for each emotion based on the Google Doc chart
 				//		F+S = Anxiety    ANX
 				//		J+S = Melancholy MEL
 
-
+// Note the VRTK Chest Control Component
 
 */
