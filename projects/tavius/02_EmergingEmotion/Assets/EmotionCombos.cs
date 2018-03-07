@@ -5,17 +5,18 @@ using UnityEngine;
 public class EmotionCombos : MonoBehaviour {
 
 	public static string tryCombo(GameObject emotionL, GameObject emotionR) {
-		if (!emotionL.GetComponent<EmotionProperties>().isEmotion || !emotionR.GetComponent<EmotionProperties>().isEmotion) {
-			Debug.Log ("One (or more) of those isn't an emotion, dude...");
-		} else {
+		string result = "nope";
+//		if (!emotionL.GetComponent<EmotionProperties>().isEmotion || !emotionR.GetComponent<EmotionProperties>().isEmotion) {
+//			Debug.Log ("One (or more) of those isn't an emotion, dude...");
+//			return result;
+//		} else {
 			string L = emotionL.GetComponent<EmotionProperties>().emotionType;
 			string R = emotionR.GetComponent<EmotionProperties>().emotionType;
-			string result;
 			switch (R) {
 			// JOY &
 			case "JOY":
 				switch (L) {
-			// Unique
+				// Unique
 				case "JOY":
 					result = "ECS";
 					return result;
@@ -35,7 +36,7 @@ public class EmotionCombos : MonoBehaviour {
 				case "JOY":
 					result = "MEL";
 					return result;
-			// Unique
+				// Unique
 				case "SAD":
 					result = "DES";
 					return result;
@@ -55,7 +56,7 @@ public class EmotionCombos : MonoBehaviour {
 				case "SAD":
 					result = "ANX";
 					return result;
-			// Unique
+				// Unique
 				case "FEA":
 					result = "TER";
 					return result;
@@ -76,6 +77,6 @@ public class EmotionCombos : MonoBehaviour {
 				//		F+F = Terror     TER
 				//		F+S = Anxiety    ANX
 				//		J+S = Melancholy MEL
-		}
+//		}
 	}
 }
