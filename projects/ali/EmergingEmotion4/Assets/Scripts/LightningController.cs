@@ -5,28 +5,66 @@ using UnityEngine;
 public class LightningController : MonoBehaviour {
 
 	public GameObject Lightning; 
-	public Vector3 center;
+	private ParticleSystem PSystem; 
+	private ParticleCollisionEvent[] CollisionEvents;
+	public GameObject Orb;
+	private Vector3 center;
+	public float power = 100f;
 
+
+
+	public float radius = 5f;
 	float next_generate_time;
 
-	void Start()
+	public void OnParticleCollision (GameObject Orb)
 	{
-		next_generate_time = Time.time+5.0f;
+		CollisionEvents = new ParticleCollisionEvent[8];
+
+		int collCount = PSystem.GetSafeCollisionEventSize();
+
+		if (collCount > CollisionEvents.Length)
+			CollisionEvents = new ParticleCollisionEvent[collCount];
+
+		int eventCount = PSystem.GetCollisionEvents(Orb, CollisionEvents);
+
+		for (int i = 0; i < eventCount; i++) {
+			
+		}
+			
 	}
 
-	void Update()  
-	{
-		if(Time.time > next_generate_time)
-		{
-			
-			Instantiate (Lightning);
 
-
-			next_generate_time += 5.0f;
+	void Strike(Vector3 intersection) {
+		Vector3 strikePos = intersection; 
+		Collider[] colliders = Physics.OverlapSphere (strikePos, radius);
+		foreach (Collider hit in colliders) {
+			if (hit && hit.GetComponent<Rigidbody> ()) {
+				hit.GetComponent<Rigidbody> ().AddExplosionForce (power, strikePos, radius);
+				 
+			}
 		}
-
 	}
 }
+//	void Start()
+//	{
+//
+//		next_generate_time = Time.time+5.0f;
+//	}
+//
+//	void Update()  
+//	{
+//		if(Orb 
+//		if(Time.time > next_generate_time)
+//		{
+//			
+//			Instantiate (Lightning);
+//
+//
+//			next_generate_time += 5.0f;
+//		}
+//
+//	}
+//}
 
 	//public void GenerateLightning()
 //	{

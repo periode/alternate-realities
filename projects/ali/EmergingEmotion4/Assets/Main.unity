@@ -490,7 +490,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -768,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &568220947
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -8754,7 +8754,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2143870363
+  randomSeed: 36312327
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12081,8 +12081,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lightning: {fileID: 1367893354039742, guid: d6b020fdece384473949d7b256e9bb65, type: 2}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 0, y: 0, z: 0}
+  Orb: {fileID: 0}
+  power: 100
+  radius: 5
 --- !u!82 &1375035685
 AudioSource:
   m_ObjectHideFlags: 0
