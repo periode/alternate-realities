@@ -19,19 +19,20 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4651988185738646}
+  - component: {fileID: 114168463976199276}
+  - component: {fileID: 114352535217192022}
   - component: {fileID: 33772368098559526}
   - component: {fileID: 135801608683200762}
   - component: {fileID: 23411527827506646}
   - component: {fileID: 54544654786858658}
-  - component: {fileID: 114168463976199276}
   - component: {fileID: 114293339290113882}
   - component: {fileID: 114444545323442840}
   - component: {fileID: 114094253597128332}
   - component: {fileID: 114967797564515640}
   - component: {fileID: 114006423663704654}
   m_Layer: 0
-  m_Name: JOY
-  m_TagString: Untagged
+  m_Name: EmotionPrefab
+  m_TagString: emotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431399438797752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27, y: 4.88, z: 0.23016167}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,7 +121,7 @@ MonoBehaviour:
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
-  clipOnGrab: {fileID: 0}
+  clipOnGrab: {fileID: 8300000, guid: 737a6618d669e4740862cd8ddf59e793, type: 3}
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f618fd3d6a1494d97691a7c3c4bfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emotionType: JOY
+  emotionType: 
 --- !u!114 &114293339290113882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +191,17 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114352535217192022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431399438797752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d44095892f31c4c88f9259b6657d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114444545323442840
 MonoBehaviour:
   m_ObjectHideFlags: 1
