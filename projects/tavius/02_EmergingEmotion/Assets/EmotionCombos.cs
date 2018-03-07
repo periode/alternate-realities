@@ -6,10 +6,10 @@ public class EmotionCombos : MonoBehaviour {
 
 	public static string tryCombo(GameObject emotionL, GameObject emotionR) {
 		string result = "nope";
-		if (!emotionL.GetComponent<EmotionProperties>().isEmotion || !emotionR.GetComponent<EmotionProperties>().isEmotion) {
-			Debug.Log ("One (or more) of those isn't an emotion, dude...");
-			return result;
-		} else {
+//		if (!emotionL.GetComponent<EmotionProperties>().isEmotion || !emotionR.GetComponent<EmotionProperties>().isEmotion) {
+//			Debug.Log ("One (or more) of those isn't an emotion, dude...");
+//			return result;
+//		} else {
 			string L = emotionL.GetComponent<EmotionProperties>().emotionType;
 			string R = emotionR.GetComponent<EmotionProperties>().emotionType;
 			switch (R) {
@@ -77,6 +77,6 @@ public class EmotionCombos : MonoBehaviour {
 				//		F+F = Terror     TER
 				//		F+S = Anxiety    ANX
 				//		J+S = Melancholy MEL
-		}
+//		}
 	}
 }

@@ -18,6 +18,8 @@ NEED: Prefabs for each emotion based on the Google Doc chart
 				//		F+S = Anxiety    ANX
 				//		J+S = Melancholy MEL
 
+                // change Mesh Renderer shadow properties for some?
+
 // Note the VRTK Chest Control Component
 
 */
