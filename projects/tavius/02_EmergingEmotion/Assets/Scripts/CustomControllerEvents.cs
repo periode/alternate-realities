@@ -5,10 +5,8 @@ public class CustomControllerEvents : MonoBehaviour
 {
     public bool triggered;
     private GameObject Globals;
-    private GameObject Other;
-	private GameObject Held;
-	private GameObject OtherHeld;
-    public string heldName = "zero";
+    public GameObject Other;
+    public string holding = null;
 
     private void Start()
     {
@@ -40,63 +38,58 @@ public class CustomControllerEvents : MonoBehaviour
     {
         triggered = true;
 
-		// On full trigger click, the current grabbed emotion will be set:
-		heldName = Globals.GetComponent<GlobalProperties>().isGrabbedEmotion;
-		Held = GameObject.Find(heldName);
-		// If no emotion is already a trigger, set this one:
-		if (!Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal)
-		{
-			Held.GetComponent<SphereCollider>().isTrigger = true;
-			Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal = true;
-		}
-
+        holding = Globals.GetComponent<GlobalProperties>().triggerEmotionName;
     }
 
     private void DoTriggerUnclicked(object sender, ControllerInteractionEventArgs e)
     {
-        triggered = false;
+        //triggered = false;
 
-        // If this controller was holding something on unclick:
-        if (!heldName.Equals("zero"))
+        // If this controller just let go of something:
+        if (!holding.Equals(null))
         {
-			Debug.Log (Other.GetComponent<CustomControllerEvents>().heldName);
 
-			// And the other controller is empty, reset everything:
-			if (Other.GetComponent<CustomControllerEvents>().heldName.Equals("zero") || Other.GetComponent<CustomControllerEvents>().heldName == "")
-			{
-
-				// Find the specific emotion by reverse-searching for the name-as-ID,
-				// This is set in Start() of the EmotionHandInteractions script.
-				// If it is set as a trigger, reset the local and global:
-				//if (Held.GetComponent<SphereCollider>().isTrigger) {
-					// Reset the object's variable along with the global boolean:
-
-					Held.GetComponent<SphereCollider>().isTrigger = false;
-					Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal = false;
-					Globals.GetComponent<GlobalProperties>().isGrabbedEmotion = "zero";
-				//}
-				heldName = "zero";
-			}
-			// Otherwise the other controller is also holding something:
-			else
+            // If the other controller is also holding something:
+            if (!Other.GetComponent<CustomControllerEvents>().holding.Equals(null))
             {
-				// If the other is not holding the same InstanceID:
-				string otherHeldName = Other.GetComponent<CustomControllerEvents>().heldName;
-				if (!otherHeldName.Equals(heldName))
-				{
-					// Set the global variables to that emotion instead:
-					Held.GetComponent<SphereCollider>().isTrigger = false;
-					Globals.GetComponent<GlobalProperties>().isGrabbedEmotion = otherHeldName;
-					// Add trigger to other emotion
-					OtherHeld = GameObject.Find(otherHeldName);
-					OtherHeld.GetComponent<SphereCollider>().isTrigger = true;
-				}
-				else
-				{
-					Debug.Log("Global emotion should stay the same");
-				}
-				heldName = "zero";
+                // If the other is not holding the same InstanceID:
+                string otherHold = Other.GetComponent<CustomControllerEvents>().holding;
+                if (!otherHold.Equals(holding))
+                {
+                    // Set the global variables to that emotion instead:
+                    Globals.GetComponent<GlobalProperties>().triggerEmotionName = otherHold;
+                }
+                else
+                {
+                    Debug.Log("Global emotion should stay the same");
+                }
+                holding = null;
             }
-       }
+            // If the other controller is empty, reset everything:
+            else
+            {
+
+                triggered = false;
+
+                // Find the specific emotion by reverse-searching for the name-as-ID,
+                // This is set in Start() of the EmotionHandInteractions script.
+                // If it is set as a trigger, reset the local and global:
+                string test = holding.ToString();
+                Debug.Log("Held name: " + test);
+                GameObject toReset = GameObject.Find(holding.ToString());
+                if (toReset.GetComponent<SphereCollider>().isTrigger)
+                {
+                    // Reset the object's variable along with the global boolean:
+                    toReset.GetComponent<SphereCollider>().isTrigger = false;
+                    Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal = false;
+                    Globals.GetComponent<GlobalProperties>().triggerEmotionName = null;
+                }
+                holding = null;
+            }
+        }
     }
 }
+
+// ISSUE: Not untriggered on drop
+// Holding isn't being reset to 0 for the controllers
+// Any time the trigger is released the Holding needs to be set to 0

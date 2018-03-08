@@ -5,5 +5,5 @@ using UnityEngine;
 public class GlobalProperties : MonoBehaviour {
 
     public bool isTriggerEmotionGlobal = false;
-    public string isGrabbedEmotion = "zero";
+    public string triggerEmotionName;
 }
