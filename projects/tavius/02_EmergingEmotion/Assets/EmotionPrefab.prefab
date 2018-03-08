@@ -121,7 +121,11 @@ MonoBehaviour:
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
+<<<<<<< HEAD:projects/tavius/02_EmergingEmotion/Assets/EmotionPrefab.prefab
   clipOnGrab: {fileID: 8300000, guid: 737a6618d669e4740862cd8ddf59e793, type: 3}
+=======
+  clipOnGrab: {fileID: 8300000, guid: e22d581c0fc23a14dac067a6b9109071, type: 3}
+>>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c:projects/tavius/02_EmergingEmotion/Assets/EmotionPrefab.prefab
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
@@ -160,6 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f618fd3d6a1494d97691a7c3c4bfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:projects/tavius/02_EmergingEmotion/Assets/EmotionPrefab.prefab
+=======
+  emotionPrefab: {fileID: 114168463976199276}
+>>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c:projects/tavius/02_EmergingEmotion/Assets/EmotionPrefab.prefab
   emotionType: 
 --- !u!114 &114293339290113882
 MonoBehaviour:

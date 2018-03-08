@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: b0653997f720a93429560a47b8f2a1b9
+  productGUID: 50b3601517224a940b1a9b9476f2a1da
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -268,7 +268,7 @@ PlayerSettings:
       m_Icon: {fileID: 0}
       m_Width: 1
       m_Height: 1
-      m_Kind: 46486
+      m_Kind: 46624
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
