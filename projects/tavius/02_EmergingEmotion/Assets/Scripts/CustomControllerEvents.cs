@@ -59,8 +59,6 @@ public class CustomControllerEvents : MonoBehaviour
         // If this controller was holding something on unclick:
         if (!heldName.Equals("zero"))
         {
-			Debug.Log (Other.GetComponent<CustomControllerEvents>().heldName);
-
 			// And the other controller is empty, reset everything:
 			if (Other.GetComponent<CustomControllerEvents>().heldName.Equals("zero") || Other.GetComponent<CustomControllerEvents>().heldName == "")
 			{
@@ -90,10 +88,6 @@ public class CustomControllerEvents : MonoBehaviour
 					// Add trigger to other emotion
 					OtherHeld = GameObject.Find(otherHeldName);
 					OtherHeld.GetComponent<SphereCollider>().isTrigger = true;
-				}
-				else
-				{
-					Debug.Log("Global emotion should stay the same");
 				}
 				heldName = "zero";
             }

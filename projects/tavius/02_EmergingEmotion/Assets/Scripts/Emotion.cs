@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class EmotionProperties : MonoBehaviour {
+public class Emotion : MonoBehaviour {
 
+	public Emotion emotionPrefab;
 	public static bool isEmotion = true;
+	private bool isTrigger;
 	public string emotionType; // JOY, SAD, FEA, ECS, DES, SUR, TER, ANX, MEL
     Color[] color =        {   joy,   sad,   fea,   ecs,   des,   sur,   ter,   anx,   mel };
     float[] diameter =     {  0.2f, 0.35f, 0.15f,  0.3f, 0.45f,    5f,    6f,    7f,    8f };
@@ -24,22 +26,23 @@ public class EmotionProperties : MonoBehaviour {
     public static Color anx = new Color(0f, 0f, 0f);
     public static Color mel = new Color(0f, 0f, 0f);
 
-    //    VRTK_InteractTouch;
-
-    // Add Interact Haptics (AUDIO)
-
     public void Start()
     {
         Make(emotionType);
     }
 
+	public void Update()
+	{
+		isTrigger = gameObject.GetComponent<SphereCollider>().isTrigger;
+	}
+
     private void Make(string thisEmotion)
     {
         int e = DetermineEmotion(emotionType);
-        //Debug.Log(e);
+
         if (e == -1)
         {
-            Debug.LogError("Invalid input. Check EmotionType of EmotionProperties component.");
+            Debug.LogError("Invalid input. Check EmotionType of Emotion component.");
         }
         else
         {
@@ -84,25 +87,63 @@ public class EmotionProperties : MonoBehaviour {
         }
     }
 
+	void OnTriggerStay(Collider otherEmotion)
+	{
+		int e = DetermineEmotion(emotionType);
+
+		float dist = Vector3.Distance(gameObject.transform.position, otherEmotion.transform.position);
+
+		// Lifting main orbs to face:
+		if (gameObject.name.Equals("JOY") || gameObject.name.Equals("SAD") || gameObject.name.Equals("FEA")) {
+			if (otherEmotion.CompareTag("MainCamera")) {
+				if (dist < 0.1) {
+					GameObject.Find("Ground").GetComponent<Renderer>().material.SetColor ("_Color", color[e]);
+					// my_texture = GameObject.Find("World").gameObject.GetComponent<TexturePainting>();
+					//GameObject newEmotion = Instantiate(groundPrefab, Ground.transform.position, Ground.transform.rotation);
+				}
+			}
+		}
+
+		// Get distance between the colliding objects:
+		string newType = EmotionCombos.tryCombo(gameObject, otherEmotion.gameObject);
+		float repelStrength = 2f;
+
+		// If the emotions are not compatible, repel:
+		if (newType.Equals("nope")) {
+			if (dist < diameter[e] * 1.1) {
+				// Debug.Log(rightEmotion.name + " repelled " + otherEmotion.gameObject.name);
+				Vector3 repelVector = otherEmotion.transform.position - gameObject.transform.position;
+				otherEmotion.attachedRigidbody.AddForce (repelVector * (dist / dist) * repelStrength);
+			}
+		}
+
+		// If the colliding emotion IS compatible:
+		else {
+				if (dist < diameter[e] * 0.15) {
+				// Debug.Log(rightEmotion.name + " combined with " + otherEmotion.gameObject.name);
+				Destroy(otherEmotion.gameObject);
+				Debug.Log ("Destroyed " + otherEmotion.gameObject);
+				CreateEmotion(newType);
+
+				Destroy(gameObject);
+				Debug.Log ("And destroyed " + gameObject);
+
+			}
+		}
+	}
+
+	void OnTriggerExit(Collider otherEmotion)
+	{
+		if (otherEmotion.CompareTag("incompatibleEmotion"))
+		{
+			otherEmotion.attachedRigidbody.velocity = Vector3.zero;
+		}
+	}
+
+	public void CreateEmotion(string emotionType)
+	{
+		Emotion newEmotion = Instantiate(emotionPrefab, gameObject.transform.position, gameObject.transform.rotation) as Emotion;
+		newEmotion.emotionType = emotionType;
+	}
+
 }
-
-// Example:
-
-//public class EnvObjQualities : MonoBehaviour
-//{
-//	public float alpha;
-//	public bool seen = false;
-//
-//	void Start () {
-//		this.GetComponent<Renderer>().material.color = new Color(1, 1, 1, alpha);
-//	}
-//
-//	void Update()
-//	{
-//		if (seen)
-//		{
-//			this.GetComponent<Renderer>().material.color = new Color(1, 1, 1, alpha);
-//			this.tag = "Non-Interactable";
-//		}
-//	}
-//}

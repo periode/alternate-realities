@@ -6,12 +6,12 @@ public class EmotionCombos : MonoBehaviour {
 
 	public static string tryCombo(GameObject emotionL, GameObject emotionR) {
 		string result = "nope";
-//		if (!emotionL.GetComponent<EmotionProperties>().isEmotion || !emotionR.GetComponent<EmotionProperties>().isEmotion) {
+//		if (!emotionL.GetComponent<Emotion>().isEmotion || !emotionR.GetComponent<Emotion>().isEmotion) {
 //			Debug.Log ("One (or more) of those isn't an emotion, dude...");
 //			return result;
 //		} else {
-			string L = emotionL.GetComponent<EmotionProperties>().emotionType;
-			string R = emotionR.GetComponent<EmotionProperties>().emotionType;
+			string L = emotionL.GetComponent<Emotion>().emotionType;
+			string R = emotionR.GetComponent<Emotion>().emotionType;
 			switch (R) {
 			// JOY &
 			case "JOY":

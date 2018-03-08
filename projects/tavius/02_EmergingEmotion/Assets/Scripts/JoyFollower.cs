@@ -24,13 +24,10 @@ public class JoyFollower : MonoBehaviour {
         joyVector = gameObject.transform.position;
         playerVector = VRTK_DeviceFinder.DeviceTransform(VRTK_DeviceFinder.Devices.Headset).position;
         dist = Vector3.Distance(joyVector, playerVector);
-        if (dist < 0.5f)
+        if (dist < 1f)
         {
-            joyRB.velocity = joyRB.velocity / 1.2f;
-        }
-        if (dist < 2f)
-        {
-            joySpeed = 2f;
+			joyRB.velocity = joyRB.velocity * 0f;
+			joySpeed = 0;
         }
         if (dist > 2f)
         {
@@ -38,6 +35,5 @@ public class JoyFollower : MonoBehaviour {
         }
         seekVector = playerVector - joyVector;
         joyRB.AddForce(seekVector * joySpeed);
-
     }
 }
