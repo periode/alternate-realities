@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTriggerEmotionGlobal: 0
-  triggerEmotionID: 0
+  triggerEmotionName: 
 --- !u!1001 &1522507498
 Prefab:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class EmotionHandInteractions : MonoBehaviour {
     private GameObject left;
     private GameObject right;
     private GameObject Globals;
-    private bool isTriggerEmotionGlobal;
 
     // Use this for initialization
     private void Start()
@@ -25,14 +24,7 @@ public class EmotionHandInteractions : MonoBehaviour {
 
         // Listen for the ObjectGrabbed/Ungrabbed events:
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectUngrabbed);
         Globals = GameObject.FindWithTag("globals");
-    }
-
-    private void Update()
-    {
-        // Check the global space for a triggered emotion:
-        isTriggerEmotionGlobal = Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal;
     }
 
     // When this object is grabbed:
@@ -48,25 +40,11 @@ public class EmotionHandInteractions : MonoBehaviour {
             right = GameObject.FindWithTag("right");
         }
 
-        // Run if no emotions are currently a trigger, set a new one:
-        if (!isTriggerEmotionGlobal)
-        {
-            // Set the object as a trigger, and mark its ID in the global space:
-
-            // Set the objects trigger:
-            gameObject.GetComponent<SphereCollider>().isTrigger = true;
-            // Set the global trigger:
-            Globals.GetComponent<GlobalProperties>().isTriggerEmotionGlobal = true;
-            // Set the global ID:
-            Globals.GetComponent<GlobalProperties>().triggerEmotionName = gameObject.name;
-        }
-    }
-
-    private void ObjectUngrabbed(object sender, InteractableObjectEventArgs e)
-    {
-
+		// Objects are grabbed before the trigger is fully clicked,
+		// Pass the grabbed object up to the GlobalProperties:
+		Globals.GetComponent<GlobalProperties>().isGrabbedEmotion = gameObject.name;
     }
 }
 
-// ISSUE: the Grabbed function triggers AFTER Unclicked, while releasing
 
+// Two triggers can be triggered simultenaously
