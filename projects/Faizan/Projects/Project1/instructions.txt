@@ -1,0 +1,3 @@
+Describing the input scheme and the expected behaviour of the project
+
+When the game mode is entered, the individual is placed in the middle of many cubes, which surround him from all directions. There are five 'types' or 'kinds' of cubes, each being spawned several times. Each cube has a distinct noise that it emits and a picture or animation that it projects. When the individual looks at a cube, the cube disappears. This interaction is done through raycasting. The idea of the interaction is to remove all the cubes from the environment.
