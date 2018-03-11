@@ -1,0 +1,56 @@
+USER TESTING
+
+USER # 1
+Profile: She has never used VR before. Unfamiliar with the project. 
+State of the project: Early stage of the project. The terrain was a Unity texture. Flying mechanism wasn’t working perfectly. 
+Tested: Flying controls and mechanism. 
+Conclusions: Flying mechanism made people dizzy so we decided to work more on making the flying work. Even though we weren’t testing how effective the glider was we decided to modify our model as the user didn’t understand she was on a glider. 
+
+
+COMMENTS
+
+I asked her to try to turn left or right. Her first instinct was to turn her entire body to the side she wanted to go to rather than use her hands as handles. This could be because at first she didn’t understand she was supposed to be on a glider. 
+
+She also noticed the seed controller UI but she never tried interacting with it. She didn’t realize she could throw seeds. W b hen I mentioned it was possible to do that she linked her lack of experience with VR with not being able to explore the controllers that much. 
+
+She found the music to be relaxing. However, she mentioned that the music felt like evening music. She commented that if the grass and sky were darker the music would fit better with the environment. 
+
+She thought the shadow of the glider was a bench so she was trying to get to the bench. She mentioned the game made her very dizzy but that was due to a bug. She wanted to land at one point. When asked about the purpose of the game she said it was to stimulate users and explore the field. 
+
+
+USER # 2
+Profile: Unfamiliar with the project. 
+State of the project: Mid stage of the project. The terrain was ours. Music wasn’t working at this point of the project. 
+Tested: Shooting seeds mechanism as well as the improved flying controls. 
+Conclusions: Flying mechanism was more intuitive but it still made people dizzy at certain parts. We decided to change the shooting of the seeds mechanisms as a result of this test. Now to change seeds you press on the touchpad and to shoot seeds you pull the right trigger. 
+
+COMMENTS
+
+This user understood was good at controlling the glider right from the start. She mentioned the controllers felt natural. When asked to turn left, she actually did the right gesture (turning left like you would do it with a handle). However, for the glider she mentioned that if you went diagonal, the glider should also go diagonal. 
+
+Just like user 1, she felt dizzy after using the game for a while. She mentioned in specific, that when she tried to rest her hands when she was feeling tired, the glider was going down which felt very dizzy. 
+
+As for the seeds, she felt the mechanism to shoot them wasn’t easy to figure out. We had to tell her how to use it. But once she figured out how to throw seeds and realized that they let her plant trees it seemed she really enjoyed it as she began to plan trees everywhere. 
+
+Finally, she thought that the purpose of the game was to explore the environment. Since music wasn’t working at that point, she mentioned that she couldn’t completely get in the environment. 
+
+USER #3 
+Profile: Unfamiliar with both VR and the project. 
+State of the project: Same as with user #2. Mid stage of the project. The terrain was ours. Music wasn’t working at this point of the project. 
+Tested: Shooting seeds mechanism as well as the improved flying controls. 
+Conclusions: Flying mechanism isn’t intuitive to complete beginners. We confirmed that the shooting mechanism needed to be changed. 
+
+COMMENTS 
+
+This user had a lot of troubles Once she lost control of the glider it was really hard for her to gain control again. In general, she really struggled with controlling the glider. As with the other users, she found the mechanism to shoot seeds unintuitive. 
+
+Since the music wasn’t working at the time she tested the experience this could have affected her overall experience. However, she never brought it up. She mentioned that the experience made gave her a sense of exploration. 
+
+USER #4
+Profile: Unfamiliar with the project. 
+State of the project: Almost finished.  
+Tested: Just the overall feel. 
+
+COMMENTS 
+
+This user needed to be told how to use the controllers to plant seeds and turn around but once he learned the controls he had no further problems. He especially liked flying when he was near or in the terrain structures.  He mentioned getting a god/creator-like vibe from planting and listening to the music. 
