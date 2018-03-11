@@ -1,0 +1,7 @@
+Concept
+
+This emotion that I chose to explore in this project is frustration. As such, it as an expression of hopelessness; and what it feels
+like when you believe and are told that you must have hope, but it doesn't seem like that hope is realistic. 
+It's a cynical take on the 'look for the light at the end of the tunnel' quote, and so is a tunnel which infinitely gets larger (and at an increasing rate),
+with the light consistently getting farther away. As time passes, the player moves faster and the tunnel's colors change (gradually to a lighter tone, 
+and then loops), to give a false sense that things are changing, yet the light never gets closer.

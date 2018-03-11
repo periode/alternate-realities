@@ -9,11 +9,8 @@ public class InputManager : MonoBehaviour {
 	// Getting a reference to the controller GameObject
 	private SteamVR_TrackedObject trackedObj;
 	// Getting a reference to the controller Interface
-	private SteamVR_Controller.Device Controller
-	{
-		get { return SteamVR_Controller.Input((int)trackedObj.index); }
-	}
-
+	private SteamVR_Controller.Device Controller;
+	
 	void Awake()
 	{
 		// initialize the trackedObj to the component of the controller to which the script is attached
@@ -22,6 +19,9 @@ public class InputManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+	
+		Controller = SteamVR_Controller.Input((int)trackedObj.index);
+
 
 		// Getting the Touchpad Axis
 		if (Controller.GetAxis() != Vector2.zero)
