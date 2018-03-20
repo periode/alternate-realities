@@ -2,14 +2,10 @@
 
 /*
 
-<<<<<<< HEAD
-Decide on orb size after user testing, modularize code to work with it. (See mergeDetection.cs notes)
-=======
 Interaction scripting:
 If another emotion IS held, isTrigger = true that one.
 
 
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
 
 // Name them accordingly:
 		

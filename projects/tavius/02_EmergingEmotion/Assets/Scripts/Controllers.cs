@@ -19,28 +19,6 @@
 //	public bool rightHolding;
 //	public float repelStrength;
 //
-//	//Set the speed number in the Inspector window
-//	public float moveSpeed;
-//	Rigidbody rightEmotionRB;
-//
-//	void Start()
-//	{
-//		rightEmotionRB = rightEmotion.GetComponent<Rigidbody>();
-//	}
-//
-//	void Update()
-//	{
-//		//Press right to move the GameObject to the right. Make sure you set the speed high in the Inspector window.
-//		if (Input.GetKey(KeyCode.RightArrow))
-//		{
-//			rightEmotionRB.AddForce(Vector3.right * moveSpeed);
-//		}
-//		//Press the left arrow key to move the GameObject to the left
-//		if (Input.GetKey(KeyCode.LeftArrow))
-//		{
-//			rightEmotionRB.AddForce(Vector3.left * moveSpeed);
-//		}
-//	}
 //
 //
 //	void RightTriggerDown() {

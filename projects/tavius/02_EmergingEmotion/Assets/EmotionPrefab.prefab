@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4651988185738646}
-  - component: {fileID: 114358160292675634}
+  - component: {fileID: 114168463976199276}
   - component: {fileID: 114352535217192022}
   - component: {fileID: 33772368098559526}
   - component: {fileID: 135801608683200762}
@@ -149,6 +149,19 @@ MonoBehaviour:
   detachDistance: 1
   velocityLimit: Infinity
   angularVelocityLimit: Infinity
+--- !u!114 &114168463976199276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431399438797752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f618fd3d6a1494d97691a7c3c4bfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emotionPrefab: {fileID: 114168463976199276}
+  emotionType: 
 --- !u!114 &114293339290113882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,19 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d44095892f31c4c88f9259b6657d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114358160292675634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431399438797752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5122bf55bd4911478a9a06bcee2f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emotionPrefab: {fileID: 114358160292675634}
-  emotionType: JOY
 --- !u!114 &114444545323442840
 MonoBehaviour:
   m_ObjectHideFlags: 1
