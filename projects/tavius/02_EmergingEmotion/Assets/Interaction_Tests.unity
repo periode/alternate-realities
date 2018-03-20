@@ -197,13 +197,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
 --- !u!43 &359705729
 Mesh:
   m_ObjectHideFlags: 0
@@ -416,13 +411,8 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
 --- !u!1 &577825386
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,11 +627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalRotation.y
-<<<<<<< HEAD
-      value: 0
-=======
       value: 1
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalRotation.z
@@ -649,11 +635,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalRotation.w
-<<<<<<< HEAD
-      value: 1
-=======
       value: 0
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_RootOrder
@@ -661,24 +643,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1431399438797752, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_Name
-<<<<<<< HEAD
-      value: EmotionPrefab (1)
-=======
       value: Emotion (1)
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
       objectReference: {fileID: 0}
     - target: {fileID: 114168463976199276, guid: f9cfd7fc8ad710a49ab72d50f395c514,
         type: 2}
       propertyPath: emotionType
       value: JOY
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
   m_IsPrefabParent: 0
@@ -992,17 +967,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564250295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: acd6c3da4f14c5944a18d5064c1e1005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
   m_Script: {fileID: 11500000, guid: 49d4012be66efd74a9ce0ef404bf795c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggered: 0
   heldName: zero
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
 --- !u!1 &1643770989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,17 +1295,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898844637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: acd6c3da4f14c5944a18d5064c1e1005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
   m_Script: {fileID: 11500000, guid: 49d4012be66efd74a9ce0ef404bf795c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggered: 0
   heldName: zero
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
 --- !u!1001 &1952070615
 Prefab:
   m_ObjectHideFlags: 0
@@ -1346,11 +1309,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-      value: 1.11
-=======
       value: 1.06
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1389,13 +1348,10 @@ Prefab:
       propertyPath: emotionType
       value: SAD
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
   m_IsPrefabParent: 0
@@ -1434,37 +1390,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalPosition.y
-<<<<<<< HEAD
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1431399438797752, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
-      propertyPath: m_Name
-      value: EmotionPrefab (2)
-=======
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
@@ -1494,20 +1419,16 @@ Prefab:
     - target: {fileID: 1431399438797752, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_Name
       value: Emotion (2)
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
       objectReference: {fileID: 0}
     - target: {fileID: 114168463976199276, guid: f9cfd7fc8ad710a49ab72d50f395c514,
         type: 2}
       propertyPath: emotionType
       value: FEA
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 4651988185738646, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
   m_IsPrefabParent: 0

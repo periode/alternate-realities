@@ -5,14 +5,6 @@ using VRTK;
 
 public class EmotionHandInteractions : MonoBehaviour {
 
-<<<<<<< HEAD
-    private uint controllerIndex;
-
-    // Use this for initialization
-    void Start()
-    {
-        //make sure the object has the VRTK script attached... 
-=======
     private GameObject left;
     private GameObject right;
     private GameObject Globals;
@@ -21,43 +13,12 @@ public class EmotionHandInteractions : MonoBehaviour {
     private void Start()
     {
         // Make sure the object has the VRTK script attached: 
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
         if (GetComponent<VRTK_InteractableObject>() == null)
         {
             Debug.LogError("This object " + gameObject.name + " has the EmotionHandInteractions script but not the VRTK_InteractableObject script.");
             return;
         }
 
-<<<<<<< HEAD
-        // Listen for the "ObjectGrabbed" event.
-        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-        GetComponent<VRTK_ControllerEvents>().TriggerPressed += new ControllerInteractionEventHandler(DoTriggerPressed);
-        GetComponent<VRTK_ControllerEvents>().TriggerReleased += new ControllerInteractionEventHandler(DoTriggerReleased);
-    }
-
-    // This object has been grabbed.. so do what ever is in the code..
-
-    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-
-    {
-        //controllerIndex = DoTriggerPressed(sender);
-        //GameObject.Find("LeftController");
-        Debug.Log(controllerIndex + " grabbed " + gameObject.GetComponent<EmotionProperties>().emotionType);
-    }
-
-    private void DoTriggerPressed(object sender, ControllerInteractionEventArgs e)
-    {
-        controllerIndex = VRTK_ControllerReference.GetRealIndex(e.controllerReference);
-    }
-
-    private void DoTriggerReleased(object sender, ControllerInteractionEventArgs e)
-    {
-        controllerIndex = 0;
-    }
-
-}
-
-=======
         // Set the InstanceID as the GameObject's name to be accessed later:
         gameObject.name = GetInstanceID().ToString();
 
@@ -87,4 +48,3 @@ public class EmotionHandInteractions : MonoBehaviour {
 
 
 // Two triggers can be triggered simultenaously
->>>>>>> f2da5c8646aa4cf664d9f4456a97a6925e8b340c
