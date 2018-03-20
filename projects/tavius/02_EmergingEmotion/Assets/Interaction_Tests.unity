@@ -631,14 +631,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 114358160292675634, guid: f9cfd7fc8ad710a49ab72d50f395c514,
         type: 2}
       propertyPath: emotionType
       value: SAD
       objectReference: {fileID: 0}
->>>>>>> 4abde63831dc1325cbc1ab1abb361ea6f19497c4
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
   m_IsPrefabParent: 0
@@ -1408,14 +1405,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 114358160292675634, guid: f9cfd7fc8ad710a49ab72d50f395c514,
         type: 2}
       propertyPath: emotionType
       value: FEA
       objectReference: {fileID: 0}
->>>>>>> 4abde63831dc1325cbc1ab1abb361ea6f19497c4
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9cfd7fc8ad710a49ab72d50f395c514, type: 2}
   m_IsPrefabParent: 0
