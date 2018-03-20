@@ -2,9 +2,11 @@
 
 /*
 
-Interaction scripting:
-If another emotion IS held, isTrigger = true that one.
-
+Radial Menu:
+- Fix teleport controls overlap.
+- Materialize emotions at controller, if made via menu.
+  - Separate function, one takes gameObject transform, the other the controller transform
+- Add script to 'unlock' emotions on the radial menu.
 
 
 // Name them accordingly:
