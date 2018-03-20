@@ -44,7 +44,11 @@ public class EmotionHandInteractions : MonoBehaviour {
 		// Pass the grabbed object up to the GlobalProperties:
 		Globals.GetComponent<GlobalProperties>().isGrabbedEmotion = gameObject.name;
     }
+<<<<<<< HEAD
 }
 
 
 // Two triggers can be triggered simultenaously
+=======
+}
+>>>>>>> 4abde63831dc1325cbc1ab1abb361ea6f19497c4
