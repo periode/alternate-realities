@@ -149,22 +149,6 @@ MonoBehaviour:
   detachDistance: 1
   velocityLimit: Infinity
   angularVelocityLimit: Infinity
-<<<<<<< HEAD
---- !u!114 &114168463976199276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431399438797752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f618fd3d6a1494d97691a7c3c4bfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emotionPrefab: {fileID: 114168463976199276}
-  emotionType: 
-=======
->>>>>>> 4abde63831dc1325cbc1ab1abb361ea6f19497c4
 --- !u!114 &114293339290113882
 MonoBehaviour:
   m_ObjectHideFlags: 1
