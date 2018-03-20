@@ -38,10 +38,6 @@ public class CustomControllerEvents : MonoBehaviour
 
     private void DoTriggerClicked(object sender, ControllerInteractionEventArgs e)
     {
-<<<<<<< HEAD
-
-=======
->>>>>>> 4abde63831dc1325cbc1ab1abb361ea6f19497c4
         triggered = true;
 
 		// On full trigger click, the current grabbed emotion will be set:
