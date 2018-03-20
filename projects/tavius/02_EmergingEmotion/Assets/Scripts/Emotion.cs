@@ -87,47 +87,51 @@ public class Emotion : MonoBehaviour {
         }
     }
 
+	// This function is called by Unity when THIS emotion is acting as a trigger, and is touching another collider:
 	void OnTriggerStay(Collider otherEmotion)
 	{
 		int e = DetermineEmotion(emotionType);
+		// repelStrength is a variable so that different objects can be repelled with greater or lesser force. (Should this be a property of each emotion?)
+		float repelStrength = 2f;
 
+		// Distance between this emotion and the collided object:
 		float dist = Vector3.Distance(gameObject.transform.position, otherEmotion.transform.position);
 
-		// Lifting main orbs to face:
-		if (gameObject.name.Equals("JOY") || gameObject.name.Equals("SAD") || gameObject.name.Equals("FEA")) {
+		// Change ground color by lifting one of the main 3 emotions to your face:
+		if (gameObject.GetComponent<Emotion>().emotionType.Equals("JOY") || gameObject.GetComponent<Emotion>().emotionType.Equals("SAD") || gameObject.GetComponent<Emotion>().emotionType.Equals("FEA")) {
 			if (otherEmotion.CompareTag("MainCamera")) {
-				if (dist < 0.1) {
+				if (dist < 1) {
 					GameObject.Find("Ground").GetComponent<Renderer>().material.SetColor ("_Color", color[e]);
-					// my_texture = GameObject.Find("World").gameObject.GetComponent<TexturePainting>();
-					//GameObject newEmotion = Instantiate(groundPrefab, Ground.transform.position, Ground.transform.rotation);
+					//GameObject newEmotion = Instantiate(groundPrefab, Ground.transform.position, Ground.transform.rotation);  // Useful for switching the ground prefab
 				}
 			}
 		}
 
-		// Get distance between the colliding objects:
+
+
+		// TODO: Check that both objects are emotions before sending them to tryCombo. (Otherwise the rest below here won't run)
 		string newType = EmotionCombos.tryCombo(gameObject, otherEmotion.gameObject);
-		float repelStrength = 2f;
+
 
 		// If the emotions are not compatible, repel:
 		if (newType.Equals("nope")) {
 			if (dist < diameter[e] * 1.1) {
 				// Debug.Log(rightEmotion.name + " repelled " + otherEmotion.gameObject.name);
 				Vector3 repelVector = otherEmotion.transform.position - gameObject.transform.position;
-				otherEmotion.attachedRigidbody.AddForce (repelVector * (dist / dist) * repelStrength);
+				otherEmotion.attachedRigidbody.AddForce(repelVector * (dist / dist) * repelStrength);
 			}
 		}
 
 		// If the colliding emotion IS compatible:
 		else {
+				// Once centers are within 15% of each other:
 				if (dist < diameter[e] * 0.15) {
 				// Debug.Log(rightEmotion.name + " combined with " + otherEmotion.gameObject.name);
 				Destroy(otherEmotion.gameObject);
 				Debug.Log ("Destroyed " + otherEmotion.gameObject);
 				CreateEmotion(newType);
-
 				Destroy(gameObject);
 				Debug.Log ("And destroyed " + gameObject);
-
 			}
 		}
 	}
@@ -144,6 +148,7 @@ public class Emotion : MonoBehaviour {
 	{
 		Emotion newEmotion = Instantiate(emotionPrefab, gameObject.transform.position, gameObject.transform.rotation) as Emotion;
 		newEmotion.emotionType = emotionType;
+		Debug.Log (newEmotion.name + " created");
 	}
 
 }

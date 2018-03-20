@@ -24,7 +24,7 @@ public class JoyFollower : MonoBehaviour {
         joyVector = gameObject.transform.position;
         playerVector = VRTK_DeviceFinder.DeviceTransform(VRTK_DeviceFinder.Devices.Headset).position;
         dist = Vector3.Distance(joyVector, playerVector);
-        if (dist < 1f)
+        if (dist < 0.5f)
         {
 			joyRB.velocity = joyRB.velocity * 0f;
 			joySpeed = 0;
