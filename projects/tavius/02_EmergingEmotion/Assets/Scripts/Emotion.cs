@@ -61,7 +61,7 @@ public class Emotion : MonoBehaviour {
     // Quick function to test given Emotion Type passed to this component:
     private int DetermineEmotion(string thisEmotion)
     {
-        thisEmotion = emotionType;
+        //thisEmotion = emotionType;
         switch (thisEmotion)
         {
             case "JOY":
@@ -152,14 +152,15 @@ public class Emotion : MonoBehaviour {
 	{
 		Emotion newEmotion = Instantiate(emotionPrefab, gameObject.transform.position, gameObject.transform.rotation) as Emotion;
 		newEmotion.emotionType = emotionType;
-		Debug.Log (newEmotion.name + " created");
+		//Debug.Log (newEmotion.name + " created");
 	}
 
 	public void CreateEmotionInHand(string emotionType)
 	{
 		Emotion newEmotion = Instantiate(emotionPrefab, GameObject.FindWithTag("left").transform.position, GameObject.FindWithTag("left").transform.rotation) as Emotion;
 		newEmotion.emotionType = emotionType;
-		Debug.Log (newEmotion.name + " created");
+		int i = DetermineEmotion(emotionType);
+		newEmotion.transform.Translate(Vector3.up * diameter[i] / 2f, Space.World);
 	}
 
 }

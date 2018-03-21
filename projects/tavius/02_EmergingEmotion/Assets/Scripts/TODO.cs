@@ -3,10 +3,6 @@
 /*
 
 Radial Menu:
-- Fix teleport controls overlap.
-  - Way to turn off teleport controls when menu is open?
-- Materialize emotions at controller, if made via menu.
-  - Separate function, one takes gameObject transform, the other the controller transform.
 - Add script to 'unlock' emotions on the radial menu.
 
 
