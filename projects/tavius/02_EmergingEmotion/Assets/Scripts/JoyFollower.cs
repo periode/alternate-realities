@@ -13,27 +13,34 @@ public class JoyFollower : MonoBehaviour {
     private float dist;
 //    private GameObject player;
 
-	// Use this for initialization
 	void Start () {
         joyRB = gameObject.GetComponent<Rigidbody>();
 	}
 
-    // Update is called once per frame
     void Update()
     {
         joyVector = gameObject.transform.position;
         playerVector = VRTK_DeviceFinder.DeviceTransform(VRTK_DeviceFinder.Devices.Headset).position;
+		seekVector = playerVector - joyVector;
         dist = Vector3.Distance(joyVector, playerVector);
-        if (dist < 0.5f)
-        {
-			joyRB.velocity = joyRB.velocity * 0f;
-			joySpeed = 0;
-        }
-        if (dist > 2f)
-        {
-            joySpeed = dist / 5f;
-        }
-        seekVector = playerVector - joyVector;
-        joyRB.AddForce(seekVector * joySpeed);
+		// If far away, seek the player at a speed propotional to the distance:
+		if (dist > 2f)
+		{
+			joySpeed = dist / 9f;
+			joyRB.AddForce(seekVector * joySpeed);
+		}
+		// If getting close, slow down:
+		if (dist <= 2f && dist > 0.65f)
+		{
+			joySpeed = dist / 14f;
+			joyRB.AddForce(seekVector * joySpeed);
+		}
+		// If close, float up:
+		if (dist <= 0.65f)
+		{
+			seekVector += Vector3.up;
+			joySpeed = dist * 1.2f;
+			joyRB.AddForce(seekVector * joySpeed);
+		}
     }
 }
