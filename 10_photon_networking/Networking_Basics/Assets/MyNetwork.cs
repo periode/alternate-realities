@@ -50,7 +50,7 @@ public class MyNetwork : Photon.PunBehaviour {
 		// in order for this prefab to be instantiated, it should be located in Assets/Resources folder
 	}
 
-	void OnReceiveRoomListUpdate(){ //this function is automatically called when you get new rooms (e.g. when a room is created or removed
+	void OnReceivedRoomListUpdate(){ //this function is automatically called when you get new rooms (e.g. when a room is created or removed
 		all_rooms = PhotonNetwork.GetRoomList();
 	}
 

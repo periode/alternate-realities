@@ -20,7 +20,7 @@ public class BeingController : Photon.MonoBehaviour {
 		// i.e. has been instantiated by the player through PhotonNetwork.Instantiate (see MyNetwork.cs, line 41)
 		// or if ownership has been transferred to the player (not that important right now)
 
-		if(photonView.isMine)
+		if(photonView.isMine) //are you the part of the application that called 'PhotonNetwork.Instantiate()'?
 			Movement ();
 
 		// putting the Movement() method inside the if statement allows us to make sure that our user's input
@@ -54,10 +54,9 @@ public class BeingController : Photon.MonoBehaviour {
 	[PunRPC]
 	void ForceJump(Vector3 dir){
 
-		if(photonView.isMine)
-			photonView.RPC ("ForceJump", PhotonTargets.All);
-		else
-			GetComponent<Rigidbody>().AddForce (dir * 8, ForceMode.Impulse);
+		GetComponent<Rigidbody>().AddForce (dir * 8, ForceMode.Impulse);
 
+		if(photonView.isMine)
+			photonView.RPC ("ForceJump", PhotonTargets.Others, dir);
 	}
 }
