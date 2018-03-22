@@ -1,17 +1,36 @@
-﻿
+
 
 /*
+KEY TASKS:
+ 1) Make Joy feel nice.
+ * Add audio source to play laughter.
+ * Add particle effects.
+ * Special lighting/texture.
+ 
+ 2) Swap environments when emotions are put to face.
+ * Make transition screen. (A plane/UI with that color attaches to Camera(Eye) for 5ish seconds)
+ * New terrain is placed below user.
+ * Old terrain is disabled.
+ * New audio fades in.
+ * New light fades in.
+ * Blocking plane/UI fades away.
+ 
+ 3) Polish.
+ * Make the rest of the emotions feel accurate.
+ * Fix bugs.
+ * Tweak environments.
+ * Add script to 'unlock' emotions on the radial menu?
+ * Secondary emotions affect the environment. (Balloons, surprise chests, etc.)
 
-Radial Menu:
-- Fix teleport controls overlap.
-  - Way to turn off teleport controls when menu is open?
-- Materialize emotions at controller, if made via menu.
-  - Separate function, one takes gameObject transform, the other the controller transform.
-- Add script to 'unlock' emotions on the radial menu.
+
 
 
 BUG:
 - When same same base emotions combine (e.g. JOY+JOY, SAD+SAD, FEA+FEA) two copies are made, but only one has the new emotionType applied. Extra confusing when only one should be made in the first place.
+
+ 
+ 
+
 
 // Name them accordingly:
 		
