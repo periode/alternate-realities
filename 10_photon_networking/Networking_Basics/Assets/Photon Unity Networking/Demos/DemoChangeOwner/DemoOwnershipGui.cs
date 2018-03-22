@@ -50,14 +50,14 @@ public class DemoOwnershipGui : MonoBehaviour
         {
             int playerNr = PhotonNetwork.player.ID;
             string playerIsMaster = PhotonNetwork.player.IsMasterClient ? "(master) " : "";
-            string playerColor = PlayerVariables.GetColorName(PhotonNetwork.player.ID);
+            string playerColor = this.GetColorName(PhotonNetwork.player.ID);
             GUILayout.Label(string.Format("player {0}, {1} {2}(you)", playerNr, playerColor, playerIsMaster));
 
             foreach (PhotonPlayer otherPlayer in PhotonNetwork.otherPlayers)
             {
                 playerNr = otherPlayer.ID;
                 playerIsMaster = otherPlayer.IsMasterClient ? "(master)" : "";
-                playerColor = PlayerVariables.GetColorName(otherPlayer.ID);
+                playerColor = this.GetColorName(otherPlayer.ID);
                 GUILayout.Label(string.Format("player {0}, {1} {2}", playerNr, playerColor, playerIsMaster));
             }
 
@@ -73,4 +73,23 @@ public class DemoOwnershipGui : MonoBehaviour
     }
 
     #endregion
+    
+    private string GetColorName(int playerId)
+    {
+        int index = System.Array.IndexOf(ExitGames.UtilityScripts.PlayerRoomIndexing.instance.PlayerIds, playerId);
+
+        switch (index)
+        {
+            case 0:
+                return "red";
+            case 1:
+                return "blue";
+            case 2:
+                return "yellow";
+            case 3:
+                return "green";
+        }
+
+        return string.Empty;
+    }
 }

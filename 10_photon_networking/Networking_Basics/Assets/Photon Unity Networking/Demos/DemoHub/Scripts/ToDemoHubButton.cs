@@ -8,12 +8,6 @@
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
-
-
-#if UNITY_5 && (!UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 && !UNITY_5_3) || UNITY_6
-#define UNITY_MIN_5_4
-#endif
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -61,7 +55,7 @@ namespace ExitGames.Demos
 			_canvasGroup = GetComponent<CanvasGroup>();
 
 
-			#if UNITY_MIN_5_4
+			#if UNITY_5_4_OR_NEWER
 			// Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
 			UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
 			{
@@ -72,7 +66,7 @@ namespace ExitGames.Demos
 
 	    }
 
-		#if !UNITY_MIN_5_4
+		#if !UNITY_5_4_OR_NEWER
 		/// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
 		void OnLevelWasLoaded(int level)
 		{
@@ -95,7 +89,7 @@ namespace ExitGames.Demos
 	    {
 	        bool sceneZeroLoaded = false;
 
-	        #if UNITY_5 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2
+			#if UNITY_5 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 || UNITY_5_3_OR_NEWER
 	        sceneZeroLoaded = SceneManager.GetActiveScene().buildIndex == 0;
 	        #else
 	        sceneZeroLoaded = Application.loadedLevel == 0;

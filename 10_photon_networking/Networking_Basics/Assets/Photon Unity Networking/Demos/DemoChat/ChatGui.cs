@@ -127,16 +127,28 @@ public class ChatGui : MonoBehaviour, IChatClientListener
 		this.UserIdFormPanel.gameObject.SetActive(false);
 		
 		this.chatClient = new ChatClient(this);
-		this.chatClient.Connect(PhotonNetwork.PhotonServerSettings.ChatAppID, "1.0", new ExitGames.Client.Photon.Chat.AuthenticationValues(UserName));
+        #if !UNITY_WEBGL
+        this.chatClient.UseBackgroundWorkerForSending = true;
+        #endif
+        this.chatClient.Connect(PhotonNetwork.PhotonServerSettings.ChatAppID, "1.0", new ExitGames.Client.Photon.Chat.AuthenticationValues(UserName));
 		
 		this.ChannelToggleToInstantiate.gameObject.SetActive(false);
 		Debug.Log("Connecting as: " + UserName);
 		
 		ConnectingLabel.SetActive(true);
 	}
-	
-	/// <summary>To avoid that the Editor becomes unresponsive, disconnect all Photon connections in OnApplicationQuit.</summary>
-	public void OnApplicationQuit()
+
+    /// <summary>To avoid that the Editor becomes unresponsive, disconnect all Photon connections in OnDestroy.</summary>
+    public void OnDestroy()
+    {
+        if (this.chatClient != null)
+        {
+            this.chatClient.Disconnect();
+        }
+    }
+
+    /// <summary>To avoid that the Editor becomes unresponsive, disconnect all Photon connections in OnApplicationQuit.</summary>
+    public void OnApplicationQuit()
 	{
 		if (this.chatClient != null)
 		{

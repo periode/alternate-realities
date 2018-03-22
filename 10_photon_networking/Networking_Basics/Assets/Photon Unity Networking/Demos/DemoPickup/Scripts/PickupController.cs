@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public enum PickupCharacterState
 {
     Idle = 0,

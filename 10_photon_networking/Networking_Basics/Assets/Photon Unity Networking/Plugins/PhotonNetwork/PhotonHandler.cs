@@ -4,10 +4,6 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-#if UNITY_5 && (!UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 && !UNITY_5_3) || UNITY_6
-#define UNITY_MIN_5_4
-#endif
-
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -61,7 +57,7 @@ internal class PhotonHandler : MonoBehaviour
     }
 
 
-    #if UNITY_MIN_5_4
+	#if UNITY_5_4_OR_NEWER
 
     protected void Start()
     {
@@ -201,7 +197,7 @@ internal class PhotonHandler : MonoBehaviour
         }
 
         sendThreadShouldRun = true;
-        SupportClassPun.CallInBackground(FallbackSendAckThread);   // thread will call this every 100ms until method returns false
+        SupportClassPun.StartBackgroundCalls(FallbackSendAckThread);   // thread will call this every 100ms until method returns false
 	    #endif
     }
 
@@ -232,7 +228,7 @@ internal class PhotonHandler : MonoBehaviour
                 }
             }
 
-            if (PhotonNetwork.networkingPeer.ConnectionTime - PhotonNetwork.networkingPeer.LastSendOutgoingTime > 200)
+            if (!PhotonNetwork.isMessageQueueRunning || PhotonNetwork.networkingPeer.ConnectionTime - PhotonNetwork.networkingPeer.LastSendOutgoingTime > 200)
             {
                 PhotonNetwork.networkingPeer.SendAcksOnly();
             }
@@ -247,7 +243,6 @@ internal class PhotonHandler : MonoBehaviour
 
     private const string PlayerPrefsKey = "PUNCloudBestRegion";
 
-    internal static CloudRegionCode BestRegionCodeCurrently = CloudRegionCode.none; // default to none
     internal static CloudRegionCode BestRegionCodeInPreferences
     {
         get
@@ -283,7 +278,6 @@ internal class PhotonHandler : MonoBehaviour
 
     internal IEnumerator PingAvailableRegionsCoroutine(bool connectToBest)
     {
-        BestRegionCodeCurrently = CloudRegionCode.none;
         while (PhotonNetwork.networkingPeer.AvailableRegions == null)
         {
             if (PhotonNetwork.connectionStateDetailed != ClientState.ConnectingToNameServer && PhotonNetwork.connectionStateDetailed != ClientState.ConnectedToNameServer)
@@ -315,11 +309,9 @@ internal class PhotonHandler : MonoBehaviour
 
 
         Region best = pingManager.BestRegion;
-        PhotonHandler.BestRegionCodeCurrently = best.Code;
         PhotonHandler.BestRegionCodeInPreferences = best.Code;
 
-        Debug.Log("Found best region: " + best.Code + " ping: " + best.Ping + ". Calling ConnectToRegionMaster() is: " + connectToBest);
-
+        Debug.Log("Found best region: '" + best.Code + "' ping: " + best.Ping + ". Calling ConnectToRegionMaster() is: " + connectToBest);
 
         if (connectToBest)
         {

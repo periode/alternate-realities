@@ -7,6 +7,7 @@
 using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using ExitGames.Client.Photon;
 
 public class WorkerMenu : MonoBehaviour
 {
@@ -233,5 +234,11 @@ public class WorkerMenu : MonoBehaviour
     {
         this.connectFailed = true;
         Debug.Log("OnFailedToConnectToPhoton. StatusCode: " + parameters + " ServerAddress: " + PhotonNetwork.ServerAddress);
+    }
+
+    public void OnConnectedToMaster()
+    {
+        Debug.Log("As OnConnectedToMaster() got called, the PhotonServerSetting.AutoJoinLobby must be off. Joining lobby by calling PhotonNetwork.JoinLobby().");
+        PhotonNetwork.JoinLobby();
     }
 }

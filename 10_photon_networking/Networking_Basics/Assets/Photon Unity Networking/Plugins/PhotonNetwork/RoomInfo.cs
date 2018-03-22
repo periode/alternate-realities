@@ -34,6 +34,12 @@ public class RoomInfo
     protected byte maxPlayersField = 0;
 
     /// <summary>Backing field for property.</summary>
+    protected int emptyRoomTtlField = 0;
+
+    /// <summary>Backing field for property.</summary>
+    protected int playerTtlField = 0;
+
+    /// <summary>Backing field for property.</summary>
     protected string[] expectedUsersField;
 
     /// <summary>Backing field for property.</summary>
@@ -249,8 +255,19 @@ public class RoomInfo
             this.expectedUsersField = (string[])propertiesToCache[GamePropertyKey.ExpectedUsers];
         }
 
+        if (propertiesToCache.ContainsKey((byte)GamePropertyKey.EmptyRoomTtl))
+        {
+            this.emptyRoomTtlField = (int)propertiesToCache[GamePropertyKey.EmptyRoomTtl];
+        }
+
+        if (propertiesToCache.ContainsKey((byte)GamePropertyKey.PlayerTtl))
+        {
+            this.playerTtlField = (int)propertiesToCache[GamePropertyKey.PlayerTtl];
+        }
+
         // merge the custom properties (from your application) to the cache (only string-typed keys will be kept)
         this.customPropertiesField.MergeStringKeys(propertiesToCache);
+        this.customPropertiesField.StripKeysWithNullValues();
     }
 
 

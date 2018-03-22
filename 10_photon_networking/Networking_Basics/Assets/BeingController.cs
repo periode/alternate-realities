@@ -47,25 +47,17 @@ public class BeingController : Photon.MonoBehaviour {
 
 		//make everyone else jump
 		if (Input.GetKeyDown (KeyCode.Space))
-			photonView.RPC ("MakeOthersJump", PhotonTargets.All);
+			ForceJump (Vector3.up);
 			
 	}
 
 	[PunRPC]
-	void MakeOthersJump(){
+	void ForceJump(Vector3 dir){
 
-		//we find all the players right now
-		GameObject[] gos = GameObject.FindGameObjectsWithTag ("Being");
-
-		//we go through all of them and we make each of them jump, except for the one that is us
-		for(int i = 0; i < gos.Length; i++){
-			
-			if(gos[i] != this.gameObject){//if it is not our gameObject...
-
-				//add an upwards force
-				gos[i].GetComponent<Rigidbody> ().AddForce (Vector3.up * 8, ForceMode.Impulse);
-			}
-		}
+		if(photonView.isMine)
+			photonView.RPC ("ForceJump", PhotonTargets.All);
+		else
+			GetComponent<Rigidbody>().AddForce (dir * 8, ForceMode.Impulse);
 
 	}
 }

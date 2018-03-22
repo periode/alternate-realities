@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+using ExitGames.Client.Photon;
+
 // the Photon server assigns a ActorNumber (player.ID) to each player, beginning at 1
 // for this game, we don't mind the actual number
 // this game uses player 0 and 1, so clients need to figure out their number somehow

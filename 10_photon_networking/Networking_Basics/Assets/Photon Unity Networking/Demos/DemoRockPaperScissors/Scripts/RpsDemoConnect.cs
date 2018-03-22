@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using ExitGames.Client.Photon;
+
 public class RpsDemoConnect : PunBehaviour
 {
     public InputField InputField;
