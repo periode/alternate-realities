@@ -18,13 +18,13 @@ Describe what kind of experience you intend to offer the audience, what drives y
 What is it about VR that will make it different than on a 2D screen, or as a physical performance? This is where you show the reader that you not only have a great idea, but that you also understand the technical aspects of the medium you're working in. Make sure you also mention why this is important as a social experience.
 - Describe **the emotion that you want to suggest** in your audience.
 
-Why would anyone want to experience your particular project, and what would they get out of it? Do they learn/reflect/play/challenge?
+Why would anyone want to experience your particular project, and what would they get out of it? Do they learn/reflect/play/challenge? Include how you will achieve that goal through *interaction design* and *spatial design*.
 - **How and where do you see your project being experienced?**
 
 In public, as a permanent installation, in a classroom, at home? How do you imagine someone's typical experience? This part should make the reader picture your project in the real world, and not just as an abstract idea. Perhaps you're applying for a particular setting or festival, but nothing prevents you from broadening those possibilities.
 - Are there any **unusual aspects?**
 
-Something that other projects in the same field don't have to take care of, but that you're experimenting with for the first time? Additi  onal libraries, custom controllers, specific layout of the room in which the project will be presented, etc. This part is meant to show that you are not afraid to push boundaries of what exists, but that you are also aware of what you are doing.
+Something that other projects in the same field don't have to take care of, but that you're experimenting with for the first time? Additional libraries, custom controllers, specific layout of the room in which the project will be presented, etc. This part is meant to show that you are not afraid to push boundaries of what exists, but that you are also aware of what you are doing.
 
 ---
 
@@ -33,11 +33,11 @@ Something that other projects in the same field don't have to take care of, but 
 
 - Describe **the fictional context** of your project.
 
-Once the user lands in your world, where is she (e.g. nature, laboratory, bedroom, someone's mind?). What is the backstory of that virtual place, and what is the role of the user in that story? In addition to a concise backstory for the environment itself, you can also add one for the user herself.
+Once the user lands in your world, where is she (e.g. nature, laboratory, bedroom, someone's mind?). What is the backstory of that virtual place, and what is the role of the user in that story? In addition to a concise backstory for the environment itself, you can also add one for the user herself. How do you use *patterns*, and *cognitive maps* to convey an idea?
 
 - Describe **the core interaction(s)** of your project.
 
-Why does the audience want to do that interaction? However are you indicating it to them? What are the specific, detailed steps that the audience takes for the interaction to initiate and complete? What is the consequence of the interaction? How do you ensure that your interaction can be performed over and over and over without getting boring?
+Why does the audience want to do that interaction? What is it interacting with? Why is it meaningful? How are you indicating it to them? What are the specific, detailed steps that the audience takes for the interaction to initiate and complete? What is the consequence of the interaction? How do you ensure that your interaction can be performed over and over and over without getting boring?
 
 - Describe **the visual aesthetic** of your project.
 
@@ -65,6 +65,6 @@ How does the audience member interact with your project? How does the interface 
 ---
 
 ## CONCLUSION
-#### (one page)
+#### (half page)
 
 - Remind the reader why your project is worth funding/presenting/experiencing.
