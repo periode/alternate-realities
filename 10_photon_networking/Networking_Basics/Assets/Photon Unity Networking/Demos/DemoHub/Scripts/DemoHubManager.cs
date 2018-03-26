@@ -211,20 +211,6 @@ namespace ExitGames.Demos
 				Scene = "DemoRPS-Scene"
 				}
 			);
-
-			_data.Add(
-				"MarcoPoloTutorial", 
-				new DemoData()
-				{
-				Title = "Marco Polo Tutorial",
-				Description = "Final result you could get when you do the Marco Polo Tutorial.\n" +
-					"Slightly modified to be more compatible with this package.",
-				Scene = "MarcoPolo-Scene",
-				TutorialLink = "http://tinyurl.com/nmylf44"
-				}
-			);
-
-
 		}
 
 		public void SelectDemo(string Reference)
@@ -276,6 +262,13 @@ namespace ExitGames.Demos
 		public void OpenMainWebLink()
 		{
 			Application.OpenURL(MainDemoWebLink);
+		}
+
+		// Fixes the annoying issue described here: http://forum.unity3d.com/threads/158676-!dest-m_MultiFrameGUIState-m_NamedKeyControlList/page2
+		Rect BugFixbounds = new Rect(0,0,0,0);
+		void OnGUI() {
+			GUI.SetNextControlName(gameObject.GetHashCode().ToString());
+			GUI.TextField(BugFixbounds, string.Empty, 0);
 		}
 	}
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+#pragma warning disable 618
+
 public class DemoBoxesGui : MonoBehaviour
 {
     public bool HideUI = false;

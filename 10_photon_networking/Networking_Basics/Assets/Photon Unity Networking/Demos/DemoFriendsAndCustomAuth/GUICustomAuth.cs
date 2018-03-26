@@ -140,7 +140,7 @@ public class GUICustomAuth : MonoBehaviour
                 }
                 if (GUILayout.Button("Authentication Docs"))
                 {
-                    Application.OpenURL("http://doc.exitgames.com/en/pun/current/tutorials/pun-and-facebook-custom-authentication");
+                    Application.OpenURL("https://doc.photonengine.com/en-us/pun/current/demos-and-tutorials/pun-and-facebook-custom-authentication");
                 }
 
 

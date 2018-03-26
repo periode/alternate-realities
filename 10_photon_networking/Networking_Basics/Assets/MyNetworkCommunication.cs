@@ -29,8 +29,8 @@ public class MyNetworkCommunication : Photon.MonoBehaviour { // and replace Mono
 	// this is how we update the position of all our users for everybody
 	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
 
-		if(stream.isWriting){//if we own this GameObject, send the data to other players
-
+		if(stream.isWriting){//if we own this GameObject, send the data to other players (float / ints /vectors and quaternions)
+			 
 			stream.SendNext (transform.position); // first we send the position
 			stream.SendNext (transform.rotation); // then we send the rotation
 

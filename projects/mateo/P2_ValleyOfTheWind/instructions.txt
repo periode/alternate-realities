@@ -1,0 +1,13 @@
+When you first start “Valley of the Wind” you need to calibrate the glider to your height. In order to calibrate the glider you just need to squeeze the grip on the left controller once your arms are at a comfortable height. 
+
+FLYING CONTROLS 
+Turn left - Lift the right controller. 
+Turn right - Lift the left controller. 
+Go up - Lift both controllers. 
+Go down - Lower both controllers. 
+Slow down - Hold down the left controller touchpad. 
+Speed up - Pull the left controller trigger. 
+
+PLANTING SEEDS
+Change seed - Press the right controller touchpad. 
+Shoot seed - Pull the right controller trigger. 
