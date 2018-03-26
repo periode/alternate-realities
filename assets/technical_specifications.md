@@ -18,16 +18,15 @@ For each of the milestones below, list the following:
 
 #### MILESTONE ALPHA - WEEK 10 - 04/05
 
-#### MILESTONE ALPHA - WEEK 12 - 04/17
+#### MILESTONE BETA - WEEK 12 - 04/19
 
-#### MILESTONE ALPHA - WEEK 14 - 05/01
+#### MILESTONE GOLD - WEEK 14 - 05/01
 
 ---
 
 # WEEKLY TASK LIST
 
 List the tasks that each member of the team will be focusing on for each week.
-- Week 8
 - Week 9
 - Week 10
 - Week 11
@@ -43,7 +42,7 @@ List the functions and variables that will be essential to the functioning of yo
 - *InterfaceManager.cs*
 - *NetworkManager.cs*
 - *AudioManager.cs*
-- *PlayerManager.cs*  
+- *PlayerManager.cs*
 - *InputManager.cs*
 
 Add other scripts as you see fit.
