@@ -30,8 +30,6 @@ public class GrenadeManager : Photon.MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        Debug.Log("I exist mmkay");
-
         // Set to kinematic in remote machines - we are lerping the position anyway
         if (!photonView.isMine) {
             GetComponent<Rigidbody>().isKinematic = true;
@@ -49,7 +47,6 @@ public class GrenadeManager : Photon.MonoBehaviour {
 
     IEnumerator DeathDelay() {
         yield return new WaitForSeconds(grenadeDespawnDelay);
-        Debug.Log("Boom!");
 
         // Tell our gun that we are despawning
         if (gun) {
