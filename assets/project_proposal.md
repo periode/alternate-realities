@@ -19,11 +19,8 @@ What is it about VR that will make it different than on a 2D screen, or as a phy
 - Describe **the emotion that you want to suggest** in your audience.
 
 Why would anyone want to experience your particular project, and what would they get out of it? Do they learn/reflect/play/challenge? Include how you will achieve that goal through *interaction design* and *spatial design*.
-- **How and where do you see your project being experienced?**
 
-In public, as a permanent installation, in a classroom, at home? How do you imagine someone's typical experience? This part should make the reader picture your project in the real world, and not just as an abstract idea. Perhaps you're applying for a particular setting or festival, but nothing prevents you from broadening those possibilities.
 - Are there any **unusual aspects?**
-
 Something that other projects in the same field don't have to take care of, but that you're experimenting with for the first time? Additional libraries, custom controllers, specific layout of the room in which the project will be presented, etc. This part is meant to show that you are not afraid to push boundaries of what exists, but that you are also aware of what you are doing.
 
 ---
