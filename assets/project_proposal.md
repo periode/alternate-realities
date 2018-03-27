@@ -43,6 +43,8 @@ Why does the audience want to do that interaction? What is it interacting with? 
 
 What is the overall style (realistic, surrealistic, 8-bit, low-poly, etc.), and how does that style relate to the emotion you want to create? Along with it, describe how you intend to produce that art style (which software -Rhino, Photoshop-, which assets -thingiverse, asset store- and anything else -texture shaders, camera effects, generative techniques-).
 
+- Provide **a moodboard** that represents the atmosphere of your world. Select 10-15 images which represent the direction you're going for. They don't need to be images of assets you will use, but images that get you in the headspace for creating that world. Put them together in a single image file (using GIMP or Photoshop) and include the image here.
+
 - Describe **the sonic environment** of yous project.
 
 What does the audience member hear? Group them in three overall categories: sound effects, interface sounds and music. What is their character (e.g. metallic, smooth, melodic, organic), and how does that character tie in to the overall experience you are trying to build? You should have specific examples.
@@ -59,8 +61,6 @@ How does the audience member interact with your project? How does the interface 
 - Describe **the overall experience** of the audience member. How do they join? Where do they start? What would they typically do? How would they conclude their experience? Emphasize the important moments and the transition moments.
 
 - Describe **a specific moment**. Try to be as precise and thorough as possible. Where does the audience member look? How do they move? What is going on in their head? What is a realistic, almost scientific depiction of the scene? How does the system look like at that moment? How does it evolve? This should be able to show the reader that you care about details and that you are not only thing in broad, abstract terms.
-
-- Provide **a moodboard** that represents the atmosphere of your world. Select 10-15 images which represent the direction you're going for. They don't need to be images of assets you will use, but images that get you in the headspace for creating that world. Put them together in a single image file (using GIMP or Photoshop) and include the image here.
 
 ---
 
