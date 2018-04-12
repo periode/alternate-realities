@@ -17,12 +17,12 @@ public class AudioManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.P)){
 			snapshot_high.TransitionTo (1.0f);
 		}
 
 		if(Input.GetKeyDown(KeyCode.I)){
-			snapshot_base.TransitionTo (1.0f);
+			snapshot_base.TransitionTo (3.0f);
 		}
 		
 	}
